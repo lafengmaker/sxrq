@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 import com.lafengmaker.core.dao.SysLogDao;
 import com.lafengmaker.core.dao.UserDao;
 import com.lafengmaker.core.dao.UserScheduleDao;
-import com.lafengmaker.core.entity.SysLog;
-import com.lafengmaker.core.entity.User;
 import com.lafengmaker.core.entity.UserSchedule;
 import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.helper.ScheduleHelper;
@@ -39,29 +37,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return ul;
 	}
 	public void insertWeekData(){
-		SysLog g =new SysLog();
-		g.setCreatetime(new Date());
-		try {
-			g.setStatus(1);
-			List<User>ul=this.userDao.queryEnetityByT(new User());
-			int i=ul.size();
-			int j=0;
-			for(User u:ul){
-				j+=scheduleHelper.insertWeekScheduleForUser(u.getId());
-			}
-			g.setMessage("总记录"+i+"条，生成"+j+"条");
-		} catch (Exception e) {
-			log.error("定时任务出错", e);
-			g.setStatus(1);
-			g.setMessage("定时任务出错"+e.getMessage());
-		}
-		sysLogDao.insertEntity(g);
+	
 	}
 	
 	
 	
 	public UserSchedule getdayDate(String date, Long userid) {
-		QueryMap q=new QueryMap().addgt("cdate", new DateUtil(date).getDayFirst())
+		QueryMap q=new QueryMap(null).addgt("cdate", new DateUtil(date).getDayFirst())
 				.addlt("cdate", new DateUtil(date).getDayEnd())
 				.addeq("userid", userid);
 		List<UserSchedule>ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
@@ -122,7 +104,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 				UserSchedule u=this.userScheduleDao.queryEnetityById(UserSchedule.class, us.getId());
 				u.setWeekforecast(us.getWeekforecast());
 				u.setDescription(us.getDescription());
-				this.userScheduleDao.updateEntity(u);
+				try {
+					this.userScheduleDao.updateEntity(u);
+				} catch (Exception e) {
+					throw new UserException("数据格式有误");
+				}
 			}
 		}
 		

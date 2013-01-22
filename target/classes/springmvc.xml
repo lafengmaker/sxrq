@@ -29,8 +29,15 @@
 			value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
 	<!-- 拦截器 -->
-	<!-- <mvc:interceptors> <bean class="com.lafengmaker.core.interceptor.SessionInterceptor" 
-		/> </mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/*/*"/>
+			<mvc:exclude-mapping path="/login*"/>
+			<mvc:exclude-mapping path="/logout"/>
+	 		<bean class="com.lafengmaker.core.interceptor.SessionInterceptor" />
+		</mvc:interceptor>
+	  </mvc:interceptors>
 	<!-- 对静态资源文件的访问 方案一 （二选一） -->
 	<mvc:default-servlet-handler />
 	<!-- 对静态资源文件的访问 方案二 （二选一） -->

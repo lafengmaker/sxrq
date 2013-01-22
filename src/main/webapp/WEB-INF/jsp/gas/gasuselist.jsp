@@ -70,7 +70,7 @@ function refresh(){
     <td width="17" valign="top" background="<%=path %>/images/mail_leftbg.gif"><img src="<%=path %>/images/left-top-right.gif" width="17" height="29" /></td>
     <td valign="top" background="<%=path %>/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
       <tr>
-        <td height="31"><div class="titlebt" onclick="">日计划列表</div></td>
+        <td height="31"><div class="titlebt" onclick="">气量列表</div></td>
       </tr>
     </table></td>
     <td width="16" valign="top" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/nav-right-bg.gif" width="16" height="29" /></td>
@@ -93,7 +93,7 @@ function refresh(){
             <td height="27" class="bordertd" colspan="7" background="<%=path %>/images/news-title-bg.gif"><img src="<%=path %>/images/news-title-bg.gif" width="2" height="27"></td>
           </tr>
           <tr>
-            <td height="14" align="center" class="bordertd" colspan="7" >开始时间: <input id="sdate" type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')}'})"  class="Wdate" value="${search.d1}"  name="d1"/>结束时间:<input id="enddate" name="d2" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'sdate\')}'})" type="text" value="${search.d2}">  用户：<sf:select path="userid" items="${users}" itemLabel="name" itemValue="id"></sf:select>   <input type="submit" value="搜索"> </td>
+            <td height="14" align="center" class="bordertd" colspan="7" >开始时间: <input id="sdate" type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')}'})"  class="Wdate" value="${search.d1}"  name="d1"/>结束时间:<input id="enddate" name="d2" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'sdate\')}'})" type="text" value="${search.d2}">用户：<sf:select path="userid" disabled="${usedisable}" items="${users}" itemLabel="name" itemValue="id"></sf:select>   <input type="submit" value="搜索"> </td>
           </tr>
           <tr>
             <td height="14" align="center"  class="bordertd" valign="bottom">序号</td>
@@ -114,7 +114,11 @@ function refresh(){
           </tr>
           </c:forEach>
           <tr>
-           <td height="15" colspan="5">&nbsp;&nbsp;<span class="sec1" onclick="addgasuse()"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span></td>
+           <td height="15" colspan="5">&nbsp;&nbsp;
+           <c:if test="${user.role=='1'}">
+           <span class="sec1" onclick="addgasuse()"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span>
+           </c:if>
+           </td>
           </tr>
           <tr>
             <td height="5" colspan="5">&nbsp;</td>
@@ -126,7 +130,7 @@ function refresh(){
 					  	<script language="javascript">
 					  		function getPageViewUrl(currentPage){
 						  		$("#currentPage").val(currentPage);
-						  		$("#user").submit();
+						  		$("#userfrom").submit();
 						  	}
 					  	</script>
 		</div> 

@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,12 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.lafengmaker.core.entity.User;
+import com.lafengmaker.core.exception.UserException;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import net.sf.json.JSONArray;
 /**
@@ -562,21 +569,32 @@ public static String propertyPlaceHolderReplace( String content,Map<String, Stri
 	return content;
 }
 public static void main(String[] args) {
-	String ss="您有一份快递已于${senddate}寄出，快递内容：${sendcontent}，发票单号：${excode}。请注意查收，或联系专属业务员。";
-	String ss2="您有一份快或联系专属业务员。";
-	Pattern pattern = Pattern.compile("\\$\\{(\\w+)\\}");
-	Matcher matcher =pattern.matcher(ss2);
-//	System.out.println(matcher.groupCount());
-	while(matcher.find()){
-		System.out.println(matcher.group());
-		System.out.println(matcher.group(1));
-	}
+//	String ss="您有一份快递已于${senddate}寄出，快递内容：${sendcontent}，发票单号：${excode}。请注意查收，或联系专属业务员。";
+//	String ss2="您有一份快或联系专属业务员。";
+//	Pattern pattern = Pattern.compile("\\$\\{(\\w+)\\}");
+//	Matcher matcher =pattern.matcher(ss2);
+////	System.out.println(matcher.groupCount());
+//	while(matcher.find()){
+//		System.out.println(matcher.group());
+//		System.out.println(matcher.group(1));
+//	}
 //	int i=0;
 //	while(matcher.find(i)){
 //		System.out.println(matcher.group());
 //		i++;
 //	}
-	
+	try {
+		System.out.println(encryptBASE64("2013-1-1".getBytes()));
+		String date=StringUtil.readProperty("key", new User());
+		//date="";
+		System.out.println(DateUtil.formatStringTodate(StringUtil.decrypt(date), DateUtil.DATE));
+		if(StringUtil.isEmpty(date)||!DateUtil.isDateBefore(new Date(), DateUtil.formatStringTodate(StringUtil.decrypt(date), DateUtil.DATE))){
+			throw new UserException("已过期");
+		}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 	
 	
@@ -674,5 +692,21 @@ public static void main(String[] args) {
 			}
 		}
 		return false;
+	}
+	public static String decrypt(String key) {
+		try {
+			return new String((new BASE64Decoder()).decodeBuffer(key));
+		} catch (IOException e) {
+			return "";
+		}
+	}
+	/** * BASE64解密 * @param key * @return * @throws Exception */
+	public static byte[] decryptBASE64(String key) throws Exception {
+		return (new BASE64Decoder()).decodeBuffer(key);
+	}
+
+	/** * BASE64加密 * @param key * @return * @throws Exception */
+	public static String encryptBASE64(byte[] key) throws Exception {
+		return (new BASE64Encoder()).encodeBuffer(key);
 	}
 }

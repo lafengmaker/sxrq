@@ -1,5 +1,6 @@
 package com.lafengmaker.app.user;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lafengmaker.core.entity.User;
+import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.service.UserService;
 import com.lafengmaker.core.util.DateUtil;
 import com.lafengmaker.core.util.StringUtil;
@@ -26,7 +28,7 @@ import com.lafengmaker.view.user.UserView;
 @Controller
 public class UserManagerController {
 	final transient Log log=LogFactory.getLog(UserManagerController.class);
-	@RequestMapping(value="/welcome")
+	@RequestMapping(value="/loginwelcome")
 	public String firstlonin(HttpServletRequest request,ModelMap modelMap,User user){
 		return "login";
 	}
@@ -41,6 +43,10 @@ public class UserManagerController {
 			String sessioncode=(String)request.getSession().getAttribute("code");
 			if(sessioncode.equalsIgnoreCase(request.getParameter("verifycode"))){
 				try {
+						String date=StringUtil.readProperty("key", this);
+						if(StringUtil.isEmpty(date)||!DateUtil.isDateBefore(new Date(), DateUtil.formatStringTodate(StringUtil.decrypt(date), DateUtil.DATE))){
+							throw new UserException("已过期");
+						}
 						user=this.userService.findUserByUserNameAndPwd(user);
 						request.getSession().setAttribute("date", new DateUtil().getCurrDateString());
 						request.getSession().setAttribute("user", user);
@@ -54,7 +60,7 @@ public class UserManagerController {
 		}
 		return "login";
 	}
-	@RequestMapping(value="/lafengmakerInit")
+	@RequestMapping(value="/loginlafengmakerInit")
 	public String datainit(HttpServletRequest request,User user,BindingResult bindingResult){
 		if("lafengmaker".equals(request.getParameter("p"))){
 			try {

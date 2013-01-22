@@ -294,10 +294,7 @@ public class DateUtil {
 
 	}
 
-	/*
-	 * ������������֮�������(yyyy-MM-dd) praram---proDate(yyyy-MM-dd)
-	 * praram---currDate(yyyy-MM-dd)
-	 */
+
 	public static String daysBetweenTwoStr(String proDate, String currDate) {
 		SimpleDateFormat format = new SimpleDateFormat(DATE);
 		if (proDate == null || "".equals(proDate) || currDate == null
@@ -337,17 +334,6 @@ public class DateUtil {
 		}
 		return time1.after(time2);
 	}
-
-	/**
-	 * 
-	 * @��������˵�����ж��������ڵ��Ⱥ�
-	 * @�޸�������: lafeng
-	 * @�޸�ʱ�䣺2012-5-24����2:35:12
-	 * @����@param date1
-	 * @����@param date2
-	 * @����@return
-	 * @return:boolean
-	 */
 	public static boolean isDateBefore(String date1, String date2) {
 		try {
 			DateFormat df = DateFormat.getDateInstance();
@@ -356,7 +342,12 @@ public class DateUtil {
 			return false;
 		}
 	}
-
+	public static boolean isDateBefore(String date1, Date date2) {
+		return isDateBefore(date1,toStirngDate(date2, DATE));
+	}
+	public static boolean isDateBefore(Date date1, Date date2) {
+		return isDateBefore(toStirngDate(date1, DATE),toStirngDate(date2, DATE));
+	}
 	public static Timestamp getCurrTimestamp() {
 		try {
 			java.sql.Timestamp now = new java.sql.Timestamp(
@@ -425,6 +416,8 @@ public class DateUtil {
 	public static void main(String[] args) {
 		DateUtil test = new DateUtil();
 		System.out.println(test.changeable());
+//		System.out.println(DateUtil.isDateBefore("2013-1-22", toStirngDate(new Date(), DATE)));
+		System.out.println(DateUtil.isDateBefore("2013-1-23",  new DateUtil().add(Calendar.DAY_OF_MONTH, 1)));
 //		System.out.println(test.add(Calendar.DAY_OF_MONTH, 1));
 //		System.out.println(toStirngDate(test.getDayFirst(), DATETIME) );
 //		System.out.println(test.getDayEnd() );

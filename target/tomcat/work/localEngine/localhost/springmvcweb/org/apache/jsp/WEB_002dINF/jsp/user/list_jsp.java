@@ -264,7 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t\t\t  \t<script language=\"javascript\">\r\n");
       out.write("\t\t\t\t\t  \t\tfunction getPageViewUrl(currentPage){\r\n");
       out.write("\t\t\t\t\t\t  \t\t$(\"#currentPage\").val(currentPage);\r\n");
-      out.write("\t\t\t\t\t\t  \t\t$(\"#user\").submit();\r\n");
+      out.write("\t\t\t\t\t\t  \t\t$(\"#userfrom\").submit();\r\n");
       out.write("\t\t\t\t\t\t  \t}\r\n");
       out.write("\t\t\t\t\t  \t</script>\r\n");
       out.write("\t\t</div> \r\n");

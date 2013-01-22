@@ -1,33 +1,28 @@
 package com.lafengmaker.app.schedule;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lafengmaker.core.entity.User;
 import com.lafengmaker.core.entity.UserSchedule;
-import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.service.ScheduleService;
 import com.lafengmaker.core.service.UserService;
 import com.lafengmaker.core.util.DateUtil;
+import com.lafengmaker.core.util.SessionUtil;
 import com.lafengmaker.core.util.StringUtil;
 import com.lafengmaker.view.page.PageView;
 import com.lafengmaker.view.schedule.ScheduleSearch;
@@ -39,21 +34,44 @@ public class ScheduleManageControlloer {
 	@RequestMapping(value="/schedule/weeklist")
 	public String weeklist(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search){
 		modelMap.addAttribute("userlist", userService.getAllUser());
-		if(null==search.getUserid()){
-			return "/schedule/list";
+		modelMap.addAttribute("userdiable", true);
+		User u= SessionUtil.getUserFromRequest(request);
+		if("0".equals(u.getRole())){
+			if(null==search.getUserid()){
+				search.setUserid(u.getId());
+			}
+		}else{
+			modelMap.addAttribute("userdiable", false);
 		}
+		if(StringUtil.isEmpty(search.getDate())){
+			search.setDate(DateUtil.toStirngDate(new Date(), DateUtil.DATE));
+		}
+		String add=StringUtil.readProperty("weekdead",this);
+		Date dead= new DateUtil(new DateUtil(search.getDate()).thisMonday()).add(Calendar.DAY_OF_MONTH, Integer.parseInt(add));
+		modelMap.addAttribute("weekdead",dead);
 		modelMap.addAttribute("scheduleList", scheduleService.getWeeklyList(search.getDate(), search.getUserid()));
-		modelMap.addAttribute("scl", new UserSchedule() );
+		modelMap.addAttribute("scl", new UserSchedule());
+		modelMap.addAttribute("subable", false);
+		if(DateUtil.isDateBefore(new Date(), dead)&&u.getId().equals(search.getUserid())){
+			modelMap.addAttribute("subable", true);
+		}
 		return "/schedule/list";
 	}
 	@RequestMapping(value="/schedule/weeklistsubmit")
 	@ResponseBody
-	public ModelAndView weeklistsubmit(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search){
+	public ModelAndView weeklistsubmit(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search,HttpServletResponse response){
 		String p=request.getParameter("p");
+		response.setCharacterEncoding("utf-8");
 		try {
 			this.scheduleService.updateWeekdata(p);
+			response.getWriter().print("提交成功");
 		} catch (Exception e) {
-			throw new UserException("更新出错");
+			try {
+				response.getWriter().print(e.getMessage());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return null;
 	}
@@ -61,6 +79,10 @@ public class ScheduleManageControlloer {
 	public String showdaydata(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search){
 		if(StringUtil.isEmpty(search.getDate())){
 			search.setDate(DateUtil.toStirngDate(new Date(), DateUtil.DATE));
+		}else{
+			if(!DateUtil.isDateBefore(search.getDate(), new DateUtil().add(Calendar.DAY_OF_MONTH, 1))){
+				return "/schedule/dayinfo";
+			}
 		}
 		if(null==search.getUserid()||"0".equals(search.getUserid())){
 			User u=(User)request.getSession().getAttribute("user");
@@ -69,11 +91,15 @@ public class ScheduleManageControlloer {
 		modelMap.addAttribute("userlist", userService.getAllUser());
 		UserSchedule us=this.scheduleService.getdayDate(search.getDate(), search.getUserid());
 		if(null!=us){
-			modelMap.addAttribute("day1", new DateUtil(us.getCdate()).add(Calendar.DAY_OF_MONTH, 1));
-			modelMap.addAttribute("changeable","2".equals(us.getStatus())?false: new DateUtil().changeable());
+			Date d=new DateUtil(us.getCdate()).add(Calendar.DAY_OF_MONTH, 1);
+			modelMap.addAttribute("day1", d);
+			modelMap.addAttribute("changeable",!"1".equals(us.getStatus())||!new DateUtil().changeable()?false:true );
+			if("0".equals(us.getStatus()) && DateUtil.isDateBefore(search.getDate(), DateUtil.toStirngDate(d, DateUtil.DATETIME))){
+				modelMap.addAttribute("submitable", true);
+			}
 		}
 		modelMap.addAttribute("day", us);
-		String dtime=StringUtil.readProperty("deadline", "day.properties", this);
+		String dtime=StringUtil.readProperty("changeend", "day.properties", this);
 		modelMap.addAttribute("deadline", search.getDate()+" "+dtime);
 		return "/schedule/dayinfo";
 	}

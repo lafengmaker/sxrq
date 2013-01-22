@@ -57,7 +57,7 @@ public class  UserSchedule {
 	public void setCdate(Date cdate) {
 		this.cdate = cdate;
 	}
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.REFRESH,fetch=FetchType.EAGER)
 	@JoinColumn(insertable=false,updatable=false, name="userid")
 	public User getBuser() {
 		return buser;

@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("if (top.location !== self.location) { \r\n");
       out.write("   top.location=\"");
       out.print(path);
-      out.write("/welcome\"; \r\n");
+      out.write("/loginwelcome\"; \r\n");
       out.write("} \r\n");
       out.write("</script>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n");

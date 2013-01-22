@@ -244,18 +244,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("          <li><a href=\"schedule/weeklist\" target=\"main\">周计划</a></li>\r\n");
       out.write("        </ul>\r\n");
       out.write("      </div>\r\n");
-      out.write("     <h1 class=\"type\"><a href=\"javascript:void(0)\">公告管理</a></h1>\r\n");
-      out.write("      <div class=\"content\">\r\n");
-      out.write("        <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <td><img src=\"images/menu_topline.gif\" width=\"182\" height=\"5\" /></td>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("        </table>\r\n");
-      out.write("        <ul class=\"MM\">\r\n");
-      out.write("          <li><a href=\"pub/addNoticeBefore\" target=\"main\">发布公告</a></li>\r\n");
-      out.write("          <li><a href=\"pub/publist\" target=\"main\">公告列表</a></li>\r\n");
-      out.write("        </ul>\r\n");
-      out.write("      </div>\r\n");
+      out.write("      ");
+      if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("     <h1 class=\"type\"><a href=\"javascript:void(0)\">计量管理</a></h1>\r\n");
       out.write("      <div class=\"content\">\r\n");
       out.write("        <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n");
@@ -276,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("        </table>\r\n");
       out.write("        <ul class=\"MM\">\r\n");
       out.write("        ");
-      if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\t\t  <li><a href=\"user/pwd\" target=\"main\">修改密码</a></li>\r\n");
@@ -449,14 +441,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /left.jsp(215,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /left.jsp(184,6) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.role== '1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("          <li><a href=\"user/list\" target=\"main\">用户列表 </a></li>\r\n");
-        out.write("        ");
+        out.write("     <h1 class=\"type\"><a href=\"javascript:void(0)\">公告管理</a></h1>\r\n");
+        out.write("      <div class=\"content\">\r\n");
+        out.write("        <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n");
+        out.write("          <tr>\r\n");
+        out.write("            <td><img src=\"images/menu_topline.gif\" width=\"182\" height=\"5\" /></td>\r\n");
+        out.write("          </tr>\r\n");
+        out.write("        </table>\r\n");
+        out.write("        <ul class=\"MM\">\r\n");
+        out.write("          <li><a href=\"pub/addNoticeBefore\" target=\"main\">发布公告</a></li>\r\n");
+        out.write("          <li><a href=\"pub/publist\" target=\"main\">公告列表</a></li>\r\n");
+        out.write("        </ul>\r\n");
+        out.write("      </div>\r\n");
+        out.write("      ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -467,6 +470,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent(null);
+    // /left.jsp(217,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.role== '1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          <li><a href=\"user/list\" target=\"main\">用户列表 </a></li>\r\n");
+        out.write("        ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
     return false;
   }
 }

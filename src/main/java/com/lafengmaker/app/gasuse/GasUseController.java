@@ -29,6 +29,13 @@ public class GasUseController {
 		if(null==currpage){
 			currpage=1;
 		}
+		User u=SessionUtil.getUserFromRequest(request);
+		map.addAttribute("usedisable", true);
+		if(!"1".equals(u.getRole())){
+			search.setUserid(u.getId());
+		}else{
+			map.addAttribute("usedisable", false);
+		}
 		List<User>uss=this.userService.getAllUser();
 		map.addAttribute("users", uss);
 		map.addAttribute("search",search);
@@ -53,6 +60,8 @@ public class GasUseController {
 		if(result.hasErrors()){
 			return "gas/useradd";
 		}
+		User u=SessionUtil.getUserFromRequest(request);
+		gasUseView.setUserid(u.getId());
 		this.gasUseService.addGasuse(gasUseView.toGasUse());
 		map.addAttribute(gasUseView);
 		return  "success";

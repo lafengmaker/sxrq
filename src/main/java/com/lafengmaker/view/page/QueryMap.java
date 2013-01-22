@@ -21,6 +21,9 @@ public class QueryMap {
 	private String orderasc;
 	public QueryMap() {
 		super();
+		init();
+	}
+	private void init(){
 		eqmap=new HashMap<String, Object>();
 		likemap=new HashMap<String, String>();
 		gtmap=new HashMap<String, Object>();
@@ -107,6 +110,11 @@ public class QueryMap {
 	}
 	public Set<String> getNullmap() {
 		return nullmap;
+	}
+	public QueryMap(Integer max) {
+		super();
+		this.max = max;
+		init();
 	}
 	
 	
