@@ -70,9 +70,9 @@ public class ScheduleManageControlloer {
 		UserSchedule us=this.scheduleService.getdayDate(search.getDate(), search.getUserid());
 		if(null!=us){
 			modelMap.addAttribute("day1", new DateUtil(us.getCdate()).add(Calendar.DAY_OF_MONTH, 1));
+			modelMap.addAttribute("changeable","2".equals(us.getStatus())?false: new DateUtil().changeable());
 		}
 		modelMap.addAttribute("day", us);
-		modelMap.addAttribute("changeable","2".equals(us.getStatus())?false: new DateUtil().changeable());
 		String dtime=StringUtil.readProperty("deadline", "day.properties", this);
 		modelMap.addAttribute("deadline", search.getDate()+" "+dtime);
 		return "/schedule/dayinfo";

@@ -37,8 +37,12 @@ public class ScheduleHelper {
 			us.setUserid(id);
 			us.setCreatetime(new Date());
 			us.setStatus("0");
+			int j=0;
 			for(int i=0;i<7;i++){
-				calendar.add(Calendar.DATE, 1);
+				if(i!=0){
+					j=1;
+				}
+				calendar.add(Calendar.DATE, j);
 				us.setCdate(calendar.getTime());
 				us.setWeeknum(calendar.get(Calendar.YEAR)+""+calendar.get(Calendar.WEEK_OF_YEAR));
 				userScheduleDao.insertEntity(us);
