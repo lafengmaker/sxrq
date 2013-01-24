@@ -28,6 +28,13 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<context-param>  
+        <param-name>log4jConfigLocation</param-name>  
+        <param-value>classpath:log4j.properties</param-value>  
+    </context-param>  
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
 	<servlet-mapping>
 		<servlet-name>springMVC</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -35,6 +42,10 @@
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>

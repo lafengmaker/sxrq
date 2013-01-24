@@ -13,12 +13,13 @@ import com.lafengmaker.core.dao.UserScheduleDao;
 import com.lafengmaker.core.entity.SysLog;
 import com.lafengmaker.core.entity.User;
 import com.lafengmaker.core.entity.UserSchedule;
+import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.helper.ScheduleHelper;
 import com.lafengmaker.core.util.DateUtil;
 import com.lafengmaker.view.page.QueryMap;
 @Component(value="jobManage")
 public class JobManageServiceImpl implements JobManageService {
-	private static Logger logger = Logger.getLogger(JobManageServiceImpl.class);
+	private static Logger logger = Logger.getLogger("JobManageServiceImpl");
 	private SysLogDao sysLogDao;
 	private UserDao userDao;
 	private UserScheduleDao userScheduleDao;
@@ -46,6 +47,7 @@ public class JobManageServiceImpl implements JobManageService {
 	public void updateDaySchedule() {
 		SysLog g =new SysLog();
 		g.setCreatetime(new Date());
+		g.setType("0");
 		QueryMap q=new QueryMap(null);
 		q.addlt("cdate", new DateUtil().getDayEnd());
 		q.addeq("status", "0");
@@ -61,7 +63,9 @@ public class JobManageServiceImpl implements JobManageService {
 			g.setMessage("没有需要自动提交的数据");
 		}
 		sysLogDao.insertEntity(g);
-		
+		if(1==1){
+			throw new UserException();
+		}
 	}
 
 	public SysLogDao getSysLogDao() {

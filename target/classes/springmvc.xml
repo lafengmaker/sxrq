@@ -15,9 +15,10 @@
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		">
-		<import resource="job.xml"/>
 	<!-- 自动扫描的包名 -->
-	<context:component-scan base-package="com.lafengmaker"></context:component-scan>
+	<context:component-scan base-package="com.lafengmaker">
+	 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven />
 	<!-- 视图解释类 -->
@@ -77,7 +78,43 @@
 			</list>
 		</property>
 	</bean>
-
+	 <bean id="hibernateTransactionInterceptor"
+        class="org.springframework.transaction.interceptor.TransactionInterceptor"
+        parent="transactionIntercetorTemplate">
+        <property name="transactionManager">
+            <bean id="hibernateTransactionManager"
+                class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+                <property name="sessionFactory">
+                    <ref bean="sessionFactory" />
+                </property>
+            </bean>
+        </property>
+    </bean>
+ <!-- Transction Intercetor's Template -->
+    <bean id="transactionIntercetorTemplate" abstract="true">
+        <property name="transactionAttributes">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="is*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="check*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="insert*">PROPAGATION_REQUIRED,-UserException</prop>
+                <prop key="update*">PROPAGATION_REQUIRED,-UserException</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED,-UserException</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+     <bean id="autoProxyCreator"
+        class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="interceptorNames">
+            <list>
+                <idref bean="hibernateTransactionInterceptor" />
+            </list>
+        </property>
+        <property name="beanNames">
+            <value>*ServiceImpl</value> 
+        </property>
+    </bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -92,6 +129,7 @@
 		<property name="password" value="${dataSource.password}" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:annotation-config />   
 	<!-- <aop:aspectj-autoproxy/> -->
 	<!-- <tx:annotation-driven mode="aspectj"/> <aop:aspectj-autoproxy/> -->
 </beans>

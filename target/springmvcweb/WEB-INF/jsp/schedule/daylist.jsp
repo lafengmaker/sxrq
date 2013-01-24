@@ -63,7 +63,7 @@ function del(id){
 }
 function refresh(){
 	$("#currentPage").val(1);
-	$("#user").submit();
+	$("#userfrom").submit();
 }
 </script>
 </head>
@@ -89,7 +89,7 @@ function refresh(){
       </tr>
       <tr>
         <td colspan="4" valign="top">&nbsp;
-        <sf:form modelAttribute="search" action="daylist">
+        <sf:form modelAttribute="search" action="daylist" id="userfrom">
         <input name="currpage" type="hidden" id="currentPage"  >
         <table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
           <tr>
@@ -131,7 +131,7 @@ function refresh(){
 					  	<script language="javascript">
 					  		function getPageViewUrl(currentPage){
 						  		$("#currentPage").val(currentPage);
-						  		$("#user").submit();
+						  		$("#userfrom").submit();
 						  	}
 					  	</script>
 		</div> 

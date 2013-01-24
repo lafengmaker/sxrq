@@ -96,7 +96,7 @@ if (top.location !== self.location) {
                             <td height="35" colspan="2" class="top_hui_text" align="left">
                             <input class="editbox4" type="password" size="20" name="password">
                             *<sf:errors path="password" cssStyle=" color:red;font-size:12px; "/>
-                              <img src="images/luck.gif" width="19" height="18"> </td>
+                              <img src="<%=path %>/images/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>

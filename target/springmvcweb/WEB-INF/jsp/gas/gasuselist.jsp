@@ -70,7 +70,7 @@ function refresh(){
     <td width="17" valign="top" background="<%=path %>/images/mail_leftbg.gif"><img src="<%=path %>/images/left-top-right.gif" width="17" height="29" /></td>
     <td valign="top" background="<%=path %>/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
       <tr>
-        <td height="31"><div class="titlebt" onclick="">日计划列表</div></td>
+        <td height="31"><div class="titlebt" onclick="">气量列表</div></td>
       </tr>
     </table></td>
     <td width="16" valign="top" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/nav-right-bg.gif" width="16" height="29" /></td>
