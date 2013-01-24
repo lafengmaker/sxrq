@@ -10,15 +10,15 @@ import com.lafengmaker.core.entity.User;
 public class GenericUtil {
 	@SuppressWarnings("rawtypes")
 	public static Class getEntityClass(Class clazz, int index){
-		Type genType = clazz.getGenericSuperclass();//µÃµ½·ºÐÍ¸¸Àà  
-        //Èç¹ûÃ»ÓÐÊµÏÖParameterizedType½Ó¿Ú£¬¼´²»Ö§³Ö·ºÐÍ£¬Ö±½Ó·µ»ØObject.class   
+		Type genType = clazz.getGenericSuperclass();//ï¿½Ãµï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½  
+        //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Êµï¿½ï¿½ParameterizedTypeï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½Ö·ï¿½ï¿½Í£ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½Object.class   
         if (!(genType instanceof ParameterizedType)) {
             return Object.class;   
         }  
-        //·µ»Ø±íÊ¾´ËÀàÐÍÊµ¼ÊÀàÐÍ²ÎÊýµÄType¶ÔÏóµÄÊý×é,Êý×éÀï·ÅµÄ¶¼ÊÇ¶ÔÓ¦ÀàÐÍµÄClass, ÈçBuyerServiceBean extends DaoSupport<Buyer,Contact>¾Í·µ»ØBuyerºÍContactÀàÐÍ   
+        //ï¿½ï¿½ï¿½Ø±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½Typeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÅµÄ¶ï¿½ï¿½Ç¶ï¿½Ó¦ï¿½ï¿½ï¿½Íµï¿½Class, ï¿½ï¿½BuyerServiceBean extends DaoSupport<Buyer,Contact>ï¿½Í·ï¿½ï¿½ï¿½Buyerï¿½ï¿½Contactï¿½ï¿½ï¿½ï¿½   
         Type[] params = ((ParameterizedType) genType).getActualTypeArguments();                   
         if (index >= params.length || index < 0) { 
-        	 throw new RuntimeException("ÄãÊäÈëµÄË÷Òý"+ (index<0 ? "²»ÄÜÐ¡ÓÚ0" : "³¬³öÁË²ÎÊýµÄ×ÜÊý"));
+        	 throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+ (index<0 ? "ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½0" : "ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
         }      
         if (!(params[index] instanceof Class)) {
             return Object.class;   

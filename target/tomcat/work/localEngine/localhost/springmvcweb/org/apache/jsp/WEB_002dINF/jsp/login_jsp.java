@@ -250,7 +250,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssStyle_005fnobody.reuse(_jspx_th_sf_005ferrors_005f2);
             }
             out.write("\r\n");
-            out.write("                              <img src=\"images/luck.gif\" width=\"19\" height=\"18\"> </td>\r\n");
+            out.write("                              <img src=\"");
+            out.print(path );
+            out.write("/images/luck.gif\" width=\"19\" height=\"18\"> </td>\r\n");
             out.write("                          </tr>\r\n");
             out.write("                          <tr>\r\n");
             out.write("                            <td width=\"13%\" height=\"35\" ><span class=\"login_txt\">验证码：</span></td>\r\n");

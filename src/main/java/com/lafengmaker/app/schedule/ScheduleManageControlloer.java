@@ -35,24 +35,25 @@ public class ScheduleManageControlloer {
 	public String weeklist(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search){
 		modelMap.addAttribute("userlist", userService.getAllUser());
 		modelMap.addAttribute("userdiable", true);
+		String add=StringUtil.readProperty("weekdead",this);
+		DateUtil du=new DateUtil(new DateUtil(search.getDate()).thisMonday());
+		Date deadshow= du.add(Calendar.DAY_OF_MONTH, Integer.parseInt(add));
+		Date deadshowcompare= du.add(Calendar.DAY_OF_MONTH, Integer.parseInt(add)+1);
+		modelMap.addAttribute("weekdead",deadshow);
 		User u= SessionUtil.getUserFromRequest(request);
-		if("0".equals(u.getRole())){
-			if(null==search.getUserid()){
-				search.setUserid(u.getId());
-			}
-		}else{
+		if(null==search.getUserid()){
+			search.setUserid(u.getId());
+		}
+		if(!"0".equals(u.getRole())){
 			modelMap.addAttribute("userdiable", false);
 		}
 		if(StringUtil.isEmpty(search.getDate())){
 			search.setDate(DateUtil.toStirngDate(new Date(), DateUtil.DATE));
 		}
-		String add=StringUtil.readProperty("weekdead",this);
-		Date dead= new DateUtil(new DateUtil(search.getDate()).thisMonday()).add(Calendar.DAY_OF_MONTH, Integer.parseInt(add));
-		modelMap.addAttribute("weekdead",dead);
 		modelMap.addAttribute("scheduleList", scheduleService.getWeeklyList(search.getDate(), search.getUserid()));
 		modelMap.addAttribute("scl", new UserSchedule());
 		modelMap.addAttribute("subable", false);
-		if(DateUtil.isDateBefore(new Date(), dead)&&u.getId().equals(search.getUserid())){
+		if(DateUtil.isDateBefore(new Date(), deadshowcompare)&&u.getId().equals(search.getUserid())){
 			modelMap.addAttribute("subable", true);
 		}
 		return "/schedule/list";
@@ -77,6 +78,11 @@ public class ScheduleManageControlloer {
 	}
 	@RequestMapping(value="/schedule/day")
 	public String showdaydata(ModelMap modelMap,HttpServletRequest request,ScheduleSearch search){
+		if(null==search.getUserid()||"0".equals(search.getUserid())){
+			User u=(User)request.getSession().getAttribute("user");
+			search.setUserid(u.getId());
+		}
+		modelMap.addAttribute("userlist", userService.getAllUser());
 		if(StringUtil.isEmpty(search.getDate())){
 			search.setDate(DateUtil.toStirngDate(new Date(), DateUtil.DATE));
 		}else{
@@ -84,11 +90,6 @@ public class ScheduleManageControlloer {
 				return "/schedule/dayinfo";
 			}
 		}
-		if(null==search.getUserid()||"0".equals(search.getUserid())){
-			User u=(User)request.getSession().getAttribute("user");
-			search.setUserid(u.getId());
-		}
-		modelMap.addAttribute("userlist", userService.getAllUser());
 		UserSchedule us=this.scheduleService.getdayDate(search.getDate(), search.getUserid());
 		if(null!=us){
 			Date d=new DateUtil(us.getCdate()).add(Calendar.DAY_OF_MONTH, 1);

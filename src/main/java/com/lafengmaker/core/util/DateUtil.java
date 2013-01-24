@@ -312,10 +312,6 @@ public class DateUtil {
 		}
 		return days.toString();
 	}
-
-	/*
-	 * ָ�������뵱ǰ���ڱȽ�
-	 */
 	public static boolean compareDate(Date date) {
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat(
 				"yyyy-MM-dd");

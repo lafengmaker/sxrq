@@ -50,7 +50,7 @@ body {
 </tr>
 <tr>
 <td align="right">日期*</td>
-<td> <input id="sdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="Wdate" value=""  name="addtime"/> </td>
+<td> <input id="sdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="Wdate" value="${gasUseView.addtime}"  name="addtime"/> </td>
 <td><sf:errors cssClass="errorClass" path="addtime"/></td>
 </tr>
 <tr>

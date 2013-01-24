@@ -23,22 +23,17 @@ public class ScheduleHelper {
 		List<UserSchedule>ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
 		if(null!=ul&&ul.size()>0){
 			log.info(id+"has record");
-//			SysLog g=new SysLog();
-//			g.setCreatetime(new Date());
-//			g.setMessage(du.today()+"成员:"+id+"已经生成了记录");
-//			g.setStatus(1);
-//			sysLogDao.insertEntity(g)
 			return 0;
 		}else{
 			Calendar calendar=Calendar.getInstance();
 			calendar.setTime(DateUtil.formatStringTodate(du.thisMonday(), DateUtil.DATE));
-			UserSchedule us=new UserSchedule();
-			us.setLastmodifytime(new Date());
-			us.setUserid(id);
-			us.setCreatetime(new Date());
-			us.setStatus("0");
 			int j=0;
 			for(int i=0;i<7;i++){
+				UserSchedule us=new UserSchedule();
+				us.setLastmodifytime(new Date());
+				us.setUserid(id);
+				us.setCreatetime(new Date());
+				us.setStatus("0");
 				if(i!=0){
 					j=1;
 				}

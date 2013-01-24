@@ -1047,7 +1047,7 @@ String path=request.getContextPath();
         out.write(" </td>\r\n");
         out.write(" </tr>\r\n");
         out.write(" <tr>\r\n");
-        out.write(" <td colspan=\"4\"><input type=\"submit\" value=\"提交\"> </td>\r\n");
+        out.write(" <td colspan=\"4\"><input type=\"submit\" value=\"变更\"> </td>\r\n");
         out.write(" </tr>\r\n");
         out.write(" ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();

@@ -15,6 +15,7 @@
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		">
+	<import resource="job.xml"/>
 	<!-- 自动扫描的包名 -->
 	<context:component-scan base-package="com.lafengmaker">
 	 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -112,7 +113,7 @@
             </list>
         </property>
         <property name="beanNames">
-            <value>*ServiceImpl</value> 
+            <value>jobManageServiceImpl</value> 
         </property>
     </bean>
 	<bean id="transactionManager"
@@ -130,6 +131,4 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<context:annotation-config />   
-	<!-- <aop:aspectj-autoproxy/> -->
-	<!-- <tx:annotation-driven mode="aspectj"/> <aop:aspectj-autoproxy/> -->
 </beans>

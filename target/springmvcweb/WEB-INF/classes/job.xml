@@ -27,7 +27,7 @@
     <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="SpringQtzJobMethod"></property>
         <!-- <property name="cronExpression" value="0/1 * * * * ?"></property> -->
-        <property name="cronExpression" value="0 0/10 * * * ?"></property>
+        <property name="cronExpression" value="0 0 */1 * * ?"></property>
        <!--  <property name="cronExpression" value="0 0 0/1 * * ?"></property> -->
     </bean>
       <bean id="dayupdate" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -42,7 +42,7 @@
     <bean id="dayCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="dayupdate"></property>
         <!-- <property name="cronExpression" value="0/1 * * * * ?"></property> -->
-        <property name="cronExpression" value="0 0/10 * * * ?"></property>
+        <property name="cronExpression" value="0 0 0/1 * * ?"></property>
        <!--  <property name="cronExpression" value="0 0 0/1 * * ?"></property> -->
     </bean>
     <!-- ======================== 调度工厂 ======================== -->

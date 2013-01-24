@@ -106,7 +106,7 @@ function submitweekdata(){
             <td height="14" align="center" class="bordertd" colspan="5" > <sf:form modelAttribute="scheduleSearch" action="weeklist">时间: <sf:input cssClass="Wdate"  onClick="WdatePicker()" path="date"/>用户:<sf:select disabled="${userdiable}" items="${userlist}" itemLabel="name" itemValue="id" path="userid"/> <input type="submit" value="刷新"> </sf:form></td>
           </tr>
           <tr>
-            <td height="14" align="center" class="bordertd" colspan="5" >  <c:if test="${subable}"><font color="red">该周计划填报的截止时间是: <fmt:formatDate value="${weekdead}"/> </font> </c:if> </td>
+            <td height="14" align="center" class="bordertd" colspan="5" >  <font color="red">该周计划填报的截止时间是: <fmt:formatDate value="${weekdead}"/> </font> </td>
           </tr>
           <sf:form action="weeklistsubmit" id="listform" modelAttribute="scheduleList">
           <tr>

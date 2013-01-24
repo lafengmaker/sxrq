@@ -1,6 +1,5 @@
 package com.lafengmaker.view.gasuse;
 
-import java.util.Date;
 
 public class GasUseSearch {
 	private Long userid;

@@ -187,7 +187,7 @@ function refresh(){
  </td>
  </tr>
  <tr>
- <td colspan="4"><input type="submit" value="提交"> </td>
+ <td colspan="4"><input type="submit" value="变更"> </td>
  </tr>
  </c:if>
  </c:when>

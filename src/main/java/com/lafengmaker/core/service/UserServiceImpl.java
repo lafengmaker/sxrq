@@ -118,7 +118,9 @@ public class UserServiceImpl  implements UserService{
 	
 	public List<User> getAllUser() {
 		try {
-			return this.userDao.queryEnetityByT(new User());
+			List<User>ul= this.userDao.queryEnetityByT(new User());
+			ul.add(new User());
+			return ul;
 		} catch (Exception e) {
 			return new ArrayList<User>();
 		}
