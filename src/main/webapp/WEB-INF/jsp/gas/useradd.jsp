@@ -45,22 +45,22 @@ body {
 <table width="100%" border="0px" bordercolor="red" style="font-size: 13px; " >
 <tr>
 <td width="30%" align="right">用户*</td>
-<td width="30%"> <sf:select path="userid" items="${users}" itemLabel="name" itemValue="id"></sf:select></td>
+<td width="30%" align="left"> <sf:select path="userid" items="${users}" itemLabel="name" itemValue="id"></sf:select></td>
 <td width="40%"><sf:errors cssClass="errorClass" path="userid"/></td>
 </tr>
 <tr>
 <td align="right">日期*</td>
-<td> <input id="sdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="Wdate" value="${gasUseView.addtime}"  name="addtime"/> </td>
+<td align="left"> <input id="sdate" type="text" onfocus="WdatePicker()"  class="Wdate" value="${gasUseView.addtime}"  name="addtime"/> </td>
 <td><sf:errors cssClass="errorClass" path="addtime"/></td>
 </tr>
 <tr>
 <td align="right">*用气量</td>
-<td> <sf:input path="gasvol"/> </td>
+<td align="left"> <sf:input path="gasvol"/> </td>
 <td><sf:errors cssClass="errorClass"  path="gasvol"/></td>
 </tr>
 <tr>
 <td align="right">备注</td>
-<td> <sf:textarea path="description"/> </td>
+<td align="left"> <sf:textarea path="description"/> </td>
 <td></td>
 </tr>
 <tr>

@@ -84,7 +84,7 @@ public class UserServiceImpl  implements UserService{
 					throw new UserException("用户名已经存在");
 				}
 				this.userDao.insertEntity(u);
-				this.scheduleHelper.insertWeekScheduleForUser(u.getId());
+				//this.scheduleHelper.insertWeekScheduleForUser(u.getId());
 			}
 		}
 	}
@@ -120,6 +120,25 @@ public class UserServiceImpl  implements UserService{
 		try {
 			List<User>ul= this.userDao.queryEnetityByT(new User());
 			ul.add(new User());
+			return ul;
+		} catch (Exception e) {
+			return new ArrayList<User>();
+		}
+	}
+	public List<User> getcommUser() {
+		try {
+			List<User>ul= getcommUserNoEmpty();
+			ul.add(new User());
+			return ul;
+		} catch (Exception e) {
+			return new ArrayList<User>();
+		}
+	}
+	public List<User> getcommUserNoEmpty() {
+		try {
+			 User u=new User();
+			 u.setRole("0");
+			List<User>ul= this.userDao.queryEnetityByT(u);
 			return ul;
 		} catch (Exception e) {
 			return new ArrayList<User>();

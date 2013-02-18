@@ -12,13 +12,19 @@ import org.springframework.stereotype.Service;
 import com.lafengmaker.core.dao.UserScheduleDao;
 import com.lafengmaker.core.entity.UserSchedule;
 import com.lafengmaker.core.util.DateUtil;
+import com.lafengmaker.core.util.StringUtil;
 import com.lafengmaker.view.page.QueryMap;
 @Service
 public class ScheduleHelper {
 	private Log log=LogFactory.getLog(ScheduleHelper.class);
 	private UserScheduleDao userScheduleDao;
-	public  int   insertWeekScheduleForUser(Long id){
-		DateUtil du=new DateUtil();
+	public int insertWeekScheduleForUser(String date,Long id){
+		DateUtil du=null;
+		if(StringUtil.isEmpty(date)){
+			du=new DateUtil();
+		}else{
+			du=new DateUtil(date);
+		}
 		QueryMap q=new QueryMap().addgt("cdate",DateUtil.formatStringTodate(du.thisMonday(), DateUtil.DATE) ).addlt("cdate", DateUtil.formatStringTodate(du.thisSunday(), DateUtil.DATE)).addeq("userid", id);
 		List<UserSchedule>ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
 		if(null!=ul&&ul.size()>0){
@@ -34,6 +40,7 @@ public class ScheduleHelper {
 				us.setUserid(id);
 				us.setCreatetime(new Date());
 				us.setStatus("0");
+				us.setDayVol(0d);
 				if(i!=0){
 					j=1;
 				}
@@ -44,8 +51,9 @@ public class ScheduleHelper {
 			}
 			return 1;
 		}
-		
-		
+	}
+	public  int   insertWeekScheduleForUser(Long id){
+		return insertWeekScheduleForUser(null, id);
 	}
 	public UserScheduleDao getUserScheduleDao() {
 		return userScheduleDao;

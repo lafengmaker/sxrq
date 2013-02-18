@@ -1,7 +1,10 @@
 package com.lafengmaker.view.gasuse;
 
+import java.util.Date;
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,6 +22,8 @@ public class GasUseView {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@Min(value=1,message="用户不能为空")
+	@NotNull(message="用户不能为空")
 	public Long getUserid() {
 		return userid;
 	}
@@ -49,14 +54,18 @@ public class GasUseView {
 	public GasUse toGasUse(){
 		GasUse gu=new GasUse();
 		gu.setDescription(description);
-		gu.setAddtime(DateUtil.formatStringTodate(addtime, DateUtil.DATETIME));
+		gu.setAddtime(DateUtil.formatStringTodate(addtime, DateUtil.DATE));
 		gu.setUserid(userid);
 		gu.setId(id);
 		gu.setGasvol(gasvol);
 		return gu;
 	}
-	
-	
-	
-	
+	public GasUseView toGasUseView(GasUse gu){
+		this.description=gu.getDescription();
+		this.addtime=DateUtil.toStirngDate(gu.getAddtime(), DateUtil.DATE);
+		this.gasvol=gu.getGasvol();
+		this.id=gu.getId();
+		this.userid=gu.getUserid();
+		return this;
+	}
 }

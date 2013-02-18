@@ -169,7 +169,7 @@ function refresh(){
     <td valign="bottom" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<div id='adduser' style="width: 700px;height: 400px;" class="pop-box">
+<div id='adduser' style="width: 700px;height: 400px; display:none" class="pop-box">
 			<div class='tit'>
 				<span class="tittext"></span><img src="<%=path %>/images/pic22.gif"  class="shutbut" onclick="hideDiv('adduser')"/>
 			</div>

@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"    pageEncoding="utf-8"%>
 <%@ page isELIgnored="false"%>
 <%@taglib prefix="fn"            uri="http://java.sun.com/jsp/jstl/functions"%>  
+<%@taglib prefix="c"            uri="http://java.sun.com/jsp/jstl/core"%>  
 <%request.setAttribute("n","\n");%>
 <style type="text/css">
 <!--
@@ -55,7 +56,11 @@ body {
             </table></td>
           </tr>
           <tr height="300px">
-            <td class="left_txt2" valign="top"> ${fn:replace(fn:replace(pub.content,n,'<br/>'),' ','&nbsp')} </td>
+            <td class="left_txt2" valign="top"> ${fn:replace(fn:replace(pub.content,n,'<br/>'),' ','&nbsp')}<br/><br/>
+           <c:forEach items="${pub.vfList}" varStatus="st" var="vf">
+       		附件${st.index+1} ： <a style="color:blue" href="download?id=${vf.id}">  ${vf.realFile.name} </a><br/>
+          </c:forEach>
+            </td>
           </tr>
           <tr>
         <td height="13" valign="top">&nbsp;  <input type="button" value="返回" onclick="javascript:location='welcomeinfo';" >  </td>

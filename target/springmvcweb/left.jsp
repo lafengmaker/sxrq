@@ -172,13 +172,15 @@ H1 a {
         <ul class="MM">
         <c:choose>
         <c:when test="${user.role=='1'}">
-          <li><a href="schedule/daylist" target="main">日计划</a></li>
+          <li><a href="schedule/daylist" target="main">浏览/日审批</a></li>
+          <li><a href="schedule/weeklist" target="main">周气量审批</a></li>
         </c:when>
         <c:otherwise>
-          <li><a href="schedule/day" target="main">日计划</a></li>
+        <li><a href="schedule/daylist" target="main">浏览</a></li>
+          <li><a href="schedule/day" target="main">填报/变更</a></li>
+          <li><a href="schedule/weeklist" target="main">周计划填报</a></li>
         </c:otherwise>
         </c:choose>
-          <li><a href="schedule/weeklist" target="main">周计划</a></li>
         </ul>
       </div>
       <c:if test="${user.role== '1'}">

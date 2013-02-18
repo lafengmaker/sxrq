@@ -35,27 +35,41 @@ body {
 <script language="javascript" type="text/javascript" src="<%=path %>/js/iframe.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/jquery.form.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/regexval.js"></script>
+<script language="javascript" type="text/javascript" src="<%=path %>/js/printpage.js"></script>
 <script type="text/javascript">
 function submitweekdata(){
 	var forc=$(".weekforecast");
 	var desc=$(".description");
+	var accvol=$(".accVol");
 	var f=true
 	var json="[";
 	$(".ids").each(function(index){
 		if(index!=0){
 			json=json+","
 		}
-		json=json+"{'"+$(this).attr("name")+"':'"+$(this).val()+"','";
+		json=json+"{'"+$(this).attr("name")+"':'"+$(this).val()+"',";
 		var x=$(forc[index]).val();
-		if(numberchechk('m',x)){
-			json=json+$(forc[index]).attr("name")+"':'"+x+"','";
+		if(!x||numberchechk('m',x)){
+			json=json+"'"+$(forc[index]).attr("name")+"':'"+x+"',";
 		}else{
-			alert('数字格式不正确！')
+			alert('预测量'+x+'数字格式不正确！')
 			f= false;
 			return false ;
 		}
-		json=json+$(desc[index]).attr("name")+"':'"+$(desc[index]).val()+"'}";
-		
+		if($(accvol[index]).attr("name")){
+			var y=$(accvol[index]).val();
+			if(!y||numberchechk('m',y)){
+				json=json+"'"+$(accvol[index]).attr("name")+"':'"+y+"',";
+			}else{
+				alert('审批量:'+y+'数字格式不正确！')
+				f= false;
+				return false ;
+			}
+		}
+		if($(desc[index]).attr("name")){
+			json=json+"'"+$(desc[index]).attr("name")+"':'"+$(desc[index]).val()+"'";
+		}
+		json+="}";
 	});
 	json=json+"]";
 	if(f){
@@ -73,6 +87,29 @@ function submitweekdata(){
 		});
 	}
 }
+</script>
+<script language="VBScript">
+dim hkey_root,hkey_path,hkey_key
+hkey_root="HKEY_CURRENT_USER"
+hkey_path="\Software\Microsoft\Internet Explorer\PageSetup"
+'//设置网页打印的页眉页脚为空
+function pagesetup_null()
+on error resume next
+Set RegWsh = CreateObject("WScript.Shell")
+hkey_key="\header"
+RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""
+hkey_key="\footer"
+RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""
+end function
+'//设置网页打印的页眉页脚为默认值
+function pagesetup_default()
+on error resume next
+Set RegWsh = CreateObject("WScript.Shell")
+hkey_key="\header"
+RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P"
+hkey_key="\footer"
+RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&u&b&d"
+end function
 </script>
 </head>
 <body>
@@ -96,11 +133,10 @@ function submitweekdata(){
         <td valign="top">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="4" valign="top">&nbsp;
-        
+        <td colspan="4" valign="top">&nbsp;      
         <table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
-          <tr>
-            <td height="27" class="bordertd" colspan="3" background="<%=path %>/images/news-title-bg.gif"><img src="<%=path %>/timages/news-title-bg.gif" width="2" height="27"></td>
+          <tr class="title">
+            <td height="27" class="bordertd" colspan="3" background="<%=path %>/images/news-title-bg.gif"><img src="<%=path %>/images/news-title-bg.gif" width="2" height="27"></td>
           </tr>
           <tr>
             <td height="14" align="center" class="bordertd" colspan="5" > <sf:form modelAttribute="scheduleSearch" action="weeklist">时间: <sf:input cssClass="Wdate"  onClick="WdatePicker()" path="date"/>用户:<sf:select disabled="${userdiable}" items="${userlist}" itemLabel="name" itemValue="id" path="userid"/> <input type="submit" value="刷新"> </sf:form></td>
@@ -112,18 +148,30 @@ function submitweekdata(){
           <tr>
             <td height="14" align="center"  class="bordertd" valign="bottom">时间</td>
             <td height="14" align="center"  class="bordertd" valign="bottom">预测量</td>
-            <td height="14" align="center"	 class="bordertd" valign="bottom">备注</td>
+            <c:choose><c:when test="${userdiable}">&nbsp</c:when><c:otherwise><td height="14" align="center"	 class="bordertd" valign="bottom">审批量</td></c:otherwise>  </c:choose> 
           </tr>
           <c:forEach items="${scheduleList}" var="sch" varStatus="stutus">
           <tr>
             <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate value="${sch.cdate}" pattern="yyyy-MM-dd"/>  </td>
-            <td height="20" align="center" class="bordertd" valign="bottom"> <input type="hidden" class="ids" name="id" value="${sch.id}">  <input type="text" class="weekforecast" name="weekforecast" value="${sch.weekforecast}">万方 </td>
-            <td height="20" align="center" class="bordertd" valign="bottom"><input type="text" class="description" name="description" value="${sch.description}">  </tr>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <input type="hidden" class="ids" name="id" value="${sch.id}"> 
+             <input type="text" class="weekforecast" <c:if test="${!(subable&&userdiable)}"> disabled="disabled" </c:if> name="weekforecast" value="${sch.weekforecast}">万方 </td>
+            
+            <c:choose><c:when test="${userdiable}">
+           <%--  <input type="text" class="description" name="description" value="${sch.description}"> --%>
+            </c:when><c:otherwise>
+           <td height="20" align="center" class="bordertd" valign="bottom"> <input type="text" class="accVol" name="accVol" value="${sch.weekplan}">万方   </td>
+            </c:otherwise> </c:choose>
+           
+            </tr>
           </c:forEach>
-          <tr>
+          <tr class="np">
            <td height="15" colspan="5">
-           <c:if test="${subable}">
+           <c:if test="${subable&&userdiable}">
            &nbsp;&nbsp;<span class="sec1" onclick="submitweekdata()"> 提交&nbsp;&nbsp;&nbsp;&nbsp;</span>
+           </c:if>
+           <c:if test="${!userdiable}">
+           &nbsp;&nbsp;<span class="sec1" onclick="printTure()"> 打印&nbsp;&nbsp;&nbsp;&nbsp;</span>
+           &nbsp;&nbsp;<span class="sec1" onclick="submitweekdata()"> 审批&nbsp;&nbsp;&nbsp;&nbsp;</span>
            </c:if>
            </td>
           </tr> 
@@ -153,7 +201,7 @@ function submitweekdata(){
     <td valign="bottom" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<div id='adduser' style="width: 700px;height: 400px;" class="pop-box">
+<div id='adduser' style="width: 700px;height: 400px; display:none" class="pop-box">
 			<div class='tit'>
 				<span class="tittext"></span><img src="<%=path %>/images/pic22.gif"  class="shutbut" onclick="hideDiv('adduser')"/>
 			</div>
@@ -162,6 +210,10 @@ function submitweekdata(){
 					<iframe name="adduserfrm" id="adduserfrm"  height="400px" class="divif1"  frameborder=0  width="100%"></iframe>
 				</div>
 			</div>
+</div>
+<input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="清空页码" onclick="pagesetup_null()">&nbsp;&nbsp;
+<input type="hidden" class="tab" value="恢复页码" onclick="pagesetup_default()">
+<div id="print" style="width:950px; border:0px red solid; display:none">
 </div>
 </body>
 </html>

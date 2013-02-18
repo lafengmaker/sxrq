@@ -140,7 +140,7 @@ String path=request.getContextPath();
             out.write("<table width=\"100%\" border=\"0px\" bordercolor=\"red\" style=\"font-size: 13px; \" >\r\n");
             out.write("<tr>\r\n");
             out.write("<td width=\"30%\" align=\"right\">用户*</td>\r\n");
-            out.write("<td width=\"30%\"> ");
+            out.write("<td width=\"30%\" align=\"left\"> ");
             if (_jspx_meth_sf_005fselect_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
               return;
             out.write("</td>\r\n");
@@ -171,7 +171,7 @@ String path=request.getContextPath();
             out.write("</tr>\r\n");
             out.write("<tr>\r\n");
             out.write("<td align=\"right\">日期*</td>\r\n");
-            out.write("<td> <input id=\"sdate\" type=\"text\" onfocus=\"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})\"  class=\"Wdate\" value=\"");
+            out.write("<td align=\"left\"> <input id=\"sdate\" type=\"text\" onfocus=\"WdatePicker()\"  class=\"Wdate\" value=\"");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${gasUseView.addtime}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
             out.write("\"  name=\"addtime\"/> </td>\r\n");
             out.write("<td>");
@@ -201,7 +201,7 @@ String path=request.getContextPath();
             out.write("</tr>\r\n");
             out.write("<tr>\r\n");
             out.write("<td align=\"right\">*用气量</td>\r\n");
-            out.write("<td> ");
+            out.write("<td align=\"left\"> ");
             if (_jspx_meth_sf_005finput_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
               return;
             out.write(" </td>\r\n");
@@ -232,7 +232,7 @@ String path=request.getContextPath();
             out.write("</tr>\r\n");
             out.write("<tr>\r\n");
             out.write("<td align=\"right\">备注</td>\r\n");
-            out.write("<td> ");
+            out.write("<td align=\"left\"> ");
             if (_jspx_meth_sf_005ftextarea_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
               return;
             out.write(" </td>\r\n");
@@ -308,13 +308,13 @@ String path=request.getContextPath();
     org.springframework.web.servlet.tags.form.SelectTag _jspx_th_sf_005fselect_005f0 = (org.springframework.web.servlet.tags.form.SelectTag) _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fnobody.get(org.springframework.web.servlet.tags.form.SelectTag.class);
     _jspx_th_sf_005fselect_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fselect_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/useradd.jsp(48,17) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(48,30) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setPath("userid");
-    // /WEB-INF/jsp/gas/useradd.jsp(48,17) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(48,30) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${users}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/gas/useradd.jsp(48,17) name = itemLabel type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(48,30) name = itemLabel type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItemLabel("name");
-    // /WEB-INF/jsp/gas/useradd.jsp(48,17) name = itemValue type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(48,30) name = itemValue type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItemValue("id");
     int[] _jspx_push_body_count_sf_005fselect_005f0 = new int[] { 0 };
     try {
@@ -341,7 +341,7 @@ String path=request.getContextPath();
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f0 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/useradd.jsp(58,5) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(58,18) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setPath("gasvol");
     int[] _jspx_push_body_count_sf_005finput_005f0 = new int[] { 0 };
     try {
@@ -368,7 +368,7 @@ String path=request.getContextPath();
     org.springframework.web.servlet.tags.form.TextareaTag _jspx_th_sf_005ftextarea_005f0 = (org.springframework.web.servlet.tags.form.TextareaTag) _005fjspx_005ftagPool_005fsf_005ftextarea_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.TextareaTag.class);
     _jspx_th_sf_005ftextarea_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005ftextarea_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/useradd.jsp(63,5) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/useradd.jsp(63,18) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005ftextarea_005f0.setPath("description");
     int[] _jspx_push_body_count_sf_005ftextarea_005f0 = new int[] { 0 };
     try {

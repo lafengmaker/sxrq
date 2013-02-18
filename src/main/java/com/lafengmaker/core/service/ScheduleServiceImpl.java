@@ -6,8 +6,7 @@ import java.util.List;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,24 +23,26 @@ import com.lafengmaker.view.page.QueryMap;
 import com.lafengmaker.view.schedule.ScheduleSearch;
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
-	private Log log=LogFactory.getLog(ScheduleServiceImpl.class);
+	private Logger logger=Logger.getLogger(ScheduleServiceImpl.class);
 	private UserScheduleDao userScheduleDao;
 	private UserDao userDao;
 	private ScheduleHelper scheduleHelper;
 	private SysLogDao sysLogDao;
-	public List<UserSchedule> getWeeklyList(String date,Long userid) {
+	public List<UserSchedule> getWeeklyList(String date,Long userid,Date dateshow) {
 		DateUtil du=new DateUtil(date);
 		QueryMap q=new QueryMap().addeq("userid", userid).addgt("cdate", du.getMonday())
 				.addlt("cdate", du.getSunday());
 		List<UserSchedule>ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+		if(null==ul||ul.isEmpty()){
+			if(DateUtil.isDateBefore(new Date(), dateshow)){
+				if(null!=userid){
+					scheduleHelper.insertWeekScheduleForUser(date,userid);
+				}
+				ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+			}
+		}
 		return ul;
 	}
-	public void insertWeekData(){
-	
-	}
-	
-	
-	
 	public UserSchedule getdayDate(String date, Long userid) {
 		QueryMap q=new QueryMap(null).addgt("cdate", new DateUtil(date).getDayFirst())
 				.addlt("cdate", new DateUtil(date).getDayEnd())
@@ -53,9 +54,32 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return null;
 		
 	}
-	public UserSchedule update(UserSchedule userSchedule,String type) throws Exception {
+	public UserSchedule insertorupdate(UserSchedule userSchedule,String type) throws Exception {
 		try {
-			UserSchedule us=this.userScheduleDao.queryEnetityById(UserSchedule.class, userSchedule.getId());
+			if("1".equals(type)&&!new DateUtil().submitable(userSchedule.getCdate())){
+				throw new UserException("已经过期");
+			}
+			if("2".equals(type)&&!new DateUtil(userSchedule.getCdate()).changeable()){
+				throw new UserException("已经过期");
+			}
+			UserSchedule us=new UserSchedule();
+			if(null==userSchedule.getId()){
+				QueryMap q=new QueryMap();
+				q.addEqDate("cdate", userSchedule.getCdate());
+				List<UserSchedule> uql=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+				if(null!=null&&uql.size()>0){
+					throw new UserException("当天数据已经存在，请刷新重新提交");
+				}
+				scheduleHelper.insertWeekScheduleForUser(DateUtil.toStirngDate(userSchedule.getCdate(), DateUtil.DATE),userSchedule.getUserid());
+				List<UserSchedule>sul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+				if(null!=sul&&sul.size()>0){
+					us=sul.get(0);
+				}else{
+					throw new UserException("数据初始化错误");
+				}
+			}else{
+				us=this.userScheduleDao.queryEnetityById(UserSchedule.class, userSchedule.getId());
+			}
 			if("1".equals(type)){
 				us.setDayVol(userSchedule.getDayVol());
 				us.setDescription(userSchedule.getDescription());
@@ -67,9 +91,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 			us.setLastmodifytime(new Date());
 			this.userScheduleDao.updateEntity(us);
 			return us;
-		} catch (Exception e) {
-			log.error("更新出错",e);
-			throw new UserException("数据出错");
+		} catch (UserException e) {
+			logger.error("更新出错",e);
+			throw e;
+		}catch (Throwable te) {
+			logger.error("更新出错",te);
+			throw new UserException("更新出错");
 		}
 		
 	}
@@ -88,7 +115,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		}
 		q.setFirst(pv.getFirstResult());
 		q.addNotIn("status", "0");
-		q.setOrder("lastmodifytime");
+		q.setOrder("cdate");
 		List<UserSchedule>ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
 		Long total=this.userScheduleDao.queryPageCountByQueryMap(UserSchedule.class, q);
 		pv.setRecords(ul);
@@ -103,13 +130,35 @@ public class ScheduleServiceImpl implements ScheduleService {
 				UserSchedule us=(UserSchedule)JSONObject.toBean(array.getJSONObject(i), UserSchedule.class);
 				UserSchedule u=this.userScheduleDao.queryEnetityById(UserSchedule.class, us.getId());
 				u.setWeekforecast(us.getWeekforecast());
-				u.setDescription(us.getDescription());
+				if(p.indexOf("accVol")!=-1){
+					u.setWeekplan(us.getAccVol());
+				}
 				try {
 					this.userScheduleDao.updateEntity(u);
 				} catch (Exception e) {
 					throw new UserException("数据格式有误");
 				}
 			}
+		}
+		
+	}
+	@Override
+	public void daydatacheck(String p) throws UserException {
+		try {
+			logger.info("日审批"+p);
+			JSONArray array=JSONArray.fromObject(p);
+			if(null!=array&&array.size()>0){
+				for(int i=0;i<array.size(); i++){
+					UserSchedule us=(UserSchedule)JSONObject.toBean(array.getJSONObject(i), UserSchedule.class);
+					UserSchedule u=this.userScheduleDao.queryEnetityById(UserSchedule.class, us.getId());
+					u.setStatus("2");
+					u.setAccVol(us.getAccVol());
+					this.userScheduleDao.updateEntity(u);
+				}
+			}
+		} catch (Exception e) {
+			logger.error("数据格式不正确",e);
+			throw new UserException("数据格式不正确");
 		}
 		
 	}

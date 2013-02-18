@@ -393,27 +393,33 @@ public class DateUtil {
 			return false;
 		}
 	}
+	public boolean submitable(Date d){
+		String t1=StringUtil.readProperty("subend", this);
+		localTime.setTime(d);
+		add(Calendar.DAY_OF_MONTH, -1);
+		return setTimeFromstr( t1).after(Calendar.getInstance());
+	}
 	public boolean changeable(){
-		String t1=StringUtil.readProperty("changestart", this);
 		String t2=StringUtil.readProperty("changeend", this);
-		return isdateBetWeen(setTimeFromstr(t1).getTime(), setTimeFromstr(t2).getTime());
+		return setTimeFromstr( t2).after(Calendar.getInstance());
 	}
 	private Calendar setTimeFromstr(String str){
 		String[] ss=str.split(":");
 		int i=Integer.parseInt(ss[0]);
 		int j=Integer.parseInt(ss[1]);
-		Calendar cc=Calendar.getInstance();
-		cc.set(Calendar.HOUR_OF_DAY, i);
-		cc.set(Calendar.MINUTE, j);
-		cc.set(Calendar.SECOND, 0);
-		cc.set(Calendar.MILLISECOND, 0);
-		return cc;
+		System.out.println(localTime.getTime());
+		localTime.set(Calendar.HOUR_OF_DAY, i);
+		localTime.set(Calendar.MINUTE, j);
+		localTime.set(Calendar.SECOND, 0);
+		localTime.set(Calendar.MILLISECOND, 0);
+		return localTime;
 	}
 	public static void main(String[] args) {
 		DateUtil test = new DateUtil();
-		System.out.println(test.changeable());
-//		System.out.println(DateUtil.isDateBefore("2013-1-22", toStirngDate(new Date(), DATE)));
-		System.out.println(DateUtil.isDateBefore("2013-1-23",  new DateUtil().add(Calendar.DAY_OF_MONTH, 1)));
+		System.out.println(test.submitable(formatStringTodate("2013-1-28", DATE)));
+
+//		System.out.println(DateUtil.isDateBefore("2013-1-22", "2013-1-22"));
+//		System.out.println(DateUtil.isDateBefore("2013-1-23",  new DateUtil().add(Calendar.DAY_OF_MONTH, -2)));
 //		System.out.println(test.add(Calendar.DAY_OF_MONTH, 1));
 //		System.out.println(toStirngDate(test.getDayFirst(), DATETIME) );
 //		System.out.println(test.getDayEnd() );

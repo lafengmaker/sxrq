@@ -1,26 +1,33 @@
 package com.lafengmaker.core.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class NoticePub {
 	private Long id;
 	private Long userid;
+	private Long touser;
 	private String  adduser;	
 	private String title;
 	private Date createtime;
 	private Date enddate;
 	private Integer showindex;
 	private String content;
+	private Integer deleteflag;
+	private List<VFile>vfList;
 	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
 	@GeneratedValue(generator = "generator")
@@ -48,7 +55,7 @@ public class NoticePub {
 	@Lob
 	@Basic(fetch = FetchType.EAGER) 
 	//@Column(name="REMARK", columnDefinition="CLOB", nullable=true) 
-	@Column(name="REMARK", columnDefinition="varchar(MAX)", nullable=true) 
+	@Column(name="REMARK", columnDefinition="LONGTEXT", nullable=true) 
 	public String getContent() {
 		return content;
 	}
@@ -79,5 +86,23 @@ public class NoticePub {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-	
+	public Integer getDeleteflag() {
+		return deleteflag;
+	}
+	public void setDeleteflag(Integer deleteflag) {
+		this.deleteflag = deleteflag;
+	}
+	public Long getTouser() {
+		return touser;
+	}
+	public void setTouser(Long touser) {
+		this.touser = touser;
+	}
+	@OneToMany(mappedBy="noticePub",targetEntity=VFile.class,fetch=FetchType.LAZY)
+	public List<VFile> getVfList() {
+		return vfList;
+	}
+	public void setVfList(List<VFile> vfList) {
+		this.vfList = vfList;
+	}
 }

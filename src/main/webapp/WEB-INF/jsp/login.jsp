@@ -26,7 +26,7 @@ if (top.location !== self.location) {
     <td height="42" valign="top"><table width="100%" height="42" border="0" cellpadding="0" cellspacing="0" class="login_top_bg">
       <tr>
         <td width="1%" height="21">&nbsp;</td>
-        <td height="42">&nbsp;</td>
+        <td height="42" align="center">&nbsp; <img alt="dd" src="<%=path%>/images/loglogo.png" style="border: 1 red solid; height:41px"></td>
         <td width="17%">&nbsp;</td>
       </tr>
     </table></td>
@@ -34,7 +34,9 @@ if (top.location !== self.location) {
   <tr>
     <td valign="top"><table width="100%" height="532" border="0" cellpadding="0" cellspacing="0" class="login_bg">
       <tr>
-        <td width="49%" align="right"><table width="91%" height="532" border="0" cellpadding="0" cellspacing="0" class="login_bg2">
+        <td width="49%" align="right">
+        
+        <table width="91%" height="532" border="0" cellpadding="0" cellspacing="0" class="login_bg2">
             <tr>
               <td height="138" valign="top">&nbsp;<!-- <table width="89%" height="427" border="0" cellpadding="0" cellspacing="0">
                 <tr>
@@ -69,7 +71,8 @@ if (top.location !== self.location) {
             
         </table></td>
         <td width="1%" >&nbsp;</td>
-        <td width="50%" valign="bottom"><table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0">
+        <td width="50%" valign="bottom">
+        <table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
               <td width="4%">&nbsp;</td>
               <td width="96%" height="38"><span class="login_txt_bt">登陆</span></td>
@@ -129,7 +132,7 @@ if (top.location !== self.location) {
   <tr>
     <td height="20"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="login-buttom-bg">
       <tr>
-        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2013-2015 </span></td>
+        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2013-2014 绍兴天然气投资有限公司气量调度管理系统  版权所有  北京和利时自动化驱动技术有限公司  技术支持</span></td>
       </tr>
     </table></td>
   </tr>

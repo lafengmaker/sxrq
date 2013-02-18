@@ -21,6 +21,7 @@ public class GasUse {
 	private String description;
 	private Date addtime;
 	private User buser;
+	private Date lastmodifytime;
 	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
 	@GeneratedValue(generator = "generator")
@@ -69,6 +70,12 @@ public class GasUse {
 	}
 	public void setBuser(User buser) {
 		this.buser = buser;
+	}
+	public Date getLastmodifytime() {
+		return lastmodifytime;
+	}
+	public void setLastmodifytime(Date lastmodifytime) {
+		this.lastmodifytime = lastmodifytime;
 	}
 	
 	

@@ -35,6 +35,10 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>  {
 	public T queryEnetityById(Class clazz,Long id) {
 		return 	(T)this.getHibernateTemplate().get(clazz, id);
 	}
+	@Override
+	public void deleteT(T t) {
+			this.getHibernateTemplate().delete(t);
+	}
 	public List<T> queryEnetityByT(T t) throws Exception {
 		try {
 			return  (List<T>)this.getHibernateTemplate().findByExample(t);
@@ -130,7 +134,11 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>  {
 	private void addRestriction(Criteria criteria,QueryMap q){
 		if(null!=q){
 			for(String s:q.getEqmap().keySet()){
+				if(q.getNullmap().contains(s)){
+					criteria.add(Restrictions.or(Restrictions.eq(s, q.getEqmap().get(s)), Restrictions.isNull(s)));
+				}else{
 				criteria.add(Restrictions.eq(s, q.getEqmap().get(s)));
+				}
 			}
 			for(String s:q.getGtmap().keySet()){
 				if(q.getNullmap().contains(s)){

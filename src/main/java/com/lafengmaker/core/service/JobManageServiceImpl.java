@@ -34,7 +34,9 @@ public class JobManageServiceImpl implements JobManageService {
 		logger.info("run insertWeekData");
 		try {
 			g.setStatus(1);
-			List<User>ul=this.userDao.queryEnetityByT(new User());
+			User us=new User();
+			us.setRole("0");
+			List<User>ul=this.userDao.queryEnetityByT(us);
 			int i=ul.size();
 			int j=0;
 			for(User u:ul){
@@ -54,32 +56,53 @@ public class JobManageServiceImpl implements JobManageService {
 	public void updateDaySchedule() {
 			logger.info("run updateDaySchedule");
 			Calendar ca=Calendar.getInstance();
-			String end=StringUtil.readProperty("changeend", this);
+			String end=StringUtil.readProperty("subend", this);
 			String s[]=end.split(":");
+			ca.add(Calendar.DAY_OF_MONTH, 1);
 			ca.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s[0]));
-			ca.set(Calendar.MINUTE, Integer.parseInt(s[0]));
+			ca.set(Calendar.MINUTE, Integer.parseInt(s[1]));
 			ca.set(Calendar.SECOND, 0);
 			ca.set(Calendar.MILLISECOND, 0);
 			Calendar cal2=Calendar.getInstance();
+			cal2.add(Calendar.DAY_OF_MONTH, 1);
 			int betnum=cal2.get(Calendar.HOUR_OF_DAY)-ca.get(Calendar.HOUR_OF_DAY);
-			if(ca.after(cal2)&&betnum<1){
-				try {
+			if(cal2.after(ca)&&betnum<2){
 				SysLog g =new SysLog();
 				g.setCreatetime(new Date());
+				try {
 				g.setType("0");
-				QueryMap q=new QueryMap(null);
-				q.addlt("cdate", new DateUtil().getDayEnd());
-				q.addeq("status", "0");
-				List<UserSchedule> ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
-				if(null!=ul&&ul.size()>0){
-					for(UserSchedule us:ul){
-						us.setStatus("1");
-						us.setLastmodifytime(new Date());
-						this.userScheduleDao.updateEntity(us);
+				User qu=new User();
+				qu.setRole("0");
+				List<User>u=this.userDao.queryEnetityByT(qu);
+				int i=0,j=0;
+				if(null!=u&&u.size()>0){
+					for(User mem:u){
+						QueryMap q=new QueryMap(null);
+						q.addlt("cdate", new DateUtil(cal2.getTime()).getDayEnd());
+						q.addgt("cdate", new DateUtil(cal2.getTime()).getDayFirst());
+						q.addeq("userid", mem.getId());
+						List<UserSchedule> ul=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+						if(null!=ul&&ul.size()>0){
+								for(UserSchedule us:ul){
+									if("0".equals(us.getStatus())){
+										us.setStatus("1");
+										us.setLastmodifytime(new Date());
+										this.userScheduleDao.updateEntity(us);
+									}
+								}
+						}else{
+							scheduleHelper.insertWeekScheduleForUser(mem.getId());
+							List<UserSchedule> ml=this.userScheduleDao.quertByQueryMap(UserSchedule.class, q);
+							j+=ml.size();
+							for(UserSchedule us:ml){
+								us.setStatus("1");
+								us.setLastmodifytime(new Date());
+								this.userScheduleDao.updateEntity(us);
+							}
+						}
 					}
-					g.setMessage("需要自动提交的数据"+ul.size()+"条");
-				}else{
-					g.setMessage("没有需要自动提交的数据");
+					logger.info("一共"+u.size()+"个用户，"+"自动提交了"+i+"条，生成并提交了"+j+"条。");
+					g.setMessage("一共"+u.size()+"个用户，"+"自动提交了"+i+"条，生成并提交了"+j+"条。");
 				}
 				sysLogDao.insertEntity(g);
 			} catch (Throwable e) {
@@ -87,7 +110,7 @@ public class JobManageServiceImpl implements JobManageService {
 				throw new UserException("作业出错，事务回滚");
 			}
 			}else{
-				logger.info("runtime"+ca.getTime()+"now:"+cal2.getTime());
+				logger.info("time not in runtime"+ca.getTime()+"now:"+cal2.getTime());
 			}
 	}
 
@@ -118,5 +141,24 @@ public class JobManageServiceImpl implements JobManageService {
 	@Autowired
 	public void setScheduleHelper(ScheduleHelper scheduleHelper) {
 		this.scheduleHelper = scheduleHelper;
+	}
+	public static void main(String[] args) {
+		Calendar ca=Calendar.getInstance();
+		String end=StringUtil.readProperty("subend", new User());
+		String s[]=end.split(":");
+		ca.add(Calendar.DAY_OF_MONTH, 1);
+		ca.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s[0]));
+		ca.set(Calendar.MINUTE, Integer.parseInt(s[1]));
+		ca.set(Calendar.SECOND, 0);
+		ca.set(Calendar.MILLISECOND, 0);
+		Calendar cal2=Calendar.getInstance();
+		cal2.add(Calendar.DAY_OF_MONTH, 1);
+		int betnum=cal2.get(Calendar.HOUR_OF_DAY)-ca.get(Calendar.HOUR_OF_DAY);
+		System.out.println(ca.getTime());
+		System.out.println(cal2.getTime());
+		System.out.println(betnum);
+		if(cal2.after(ca)&&betnum<2){
+			System.out.println("===");
+		}
 	}
 }

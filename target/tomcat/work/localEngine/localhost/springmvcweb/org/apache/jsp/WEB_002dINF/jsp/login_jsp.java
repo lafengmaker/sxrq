@@ -94,7 +94,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("    <td height=\"42\" valign=\"top\"><table width=\"100%\" height=\"42\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"login_top_bg\">\r\n");
       out.write("      <tr>\r\n");
       out.write("        <td width=\"1%\" height=\"21\">&nbsp;</td>\r\n");
-      out.write("        <td height=\"42\">&nbsp;</td>\r\n");
+      out.write("        <td height=\"42\" align=\"center\">&nbsp; <img alt=\"dd\" src=\"");
+      out.print(path);
+      out.write("/images/loglogo.png\" style=\"border: 1 red solid; height:41px\"></td>\r\n");
       out.write("        <td width=\"17%\">&nbsp;</td>\r\n");
       out.write("      </tr>\r\n");
       out.write("    </table></td>\r\n");
@@ -102,7 +104,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  <tr>\r\n");
       out.write("    <td valign=\"top\"><table width=\"100%\" height=\"532\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"login_bg\">\r\n");
       out.write("      <tr>\r\n");
-      out.write("        <td width=\"49%\" align=\"right\"><table width=\"91%\" height=\"532\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"login_bg2\">\r\n");
+      out.write("        <td width=\"49%\" align=\"right\">\r\n");
+      out.write("        \r\n");
+      out.write("        <table width=\"91%\" height=\"532\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"login_bg2\">\r\n");
       out.write("            <tr>\r\n");
       out.write("              <td height=\"138\" valign=\"top\">&nbsp;<!-- <table width=\"89%\" height=\"427\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n");
       out.write("                <tr>\r\n");
@@ -137,7 +141,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("            \r\n");
       out.write("        </table></td>\r\n");
       out.write("        <td width=\"1%\" >&nbsp;</td>\r\n");
-      out.write("        <td width=\"50%\" valign=\"bottom\"><table width=\"100%\" height=\"59\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\r\n");
+      out.write("        <td width=\"50%\" valign=\"bottom\">\r\n");
+      out.write("        <table width=\"100%\" height=\"59\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\r\n");
       out.write("            <tr>\r\n");
       out.write("              <td width=\"4%\">&nbsp;</td>\r\n");
       out.write("              <td width=\"96%\" height=\"38\"><span class=\"login_txt_bt\">登陆</span></td>\r\n");
@@ -152,11 +157,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
       _jspx_th_sf_005fform_005f0.setPageContext(_jspx_page_context);
       _jspx_th_sf_005fform_005f0.setParent(null);
-      // /WEB-INF/jsp/login.jsp(82,28) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/login.jsp(85,28) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setMethod("post");
-      // /WEB-INF/jsp/login.jsp(82,28) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/login.jsp(85,28) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setModelAttribute("user");
-      // /WEB-INF/jsp/login.jsp(82,28) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/login.jsp(85,28) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setAction("login");
       int[] _jspx_push_body_count_sf_005fform_005f0 = new int[] { 0 };
       try {
@@ -172,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f0 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fcssStyle_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
             _jspx_th_sf_005ferrors_005f0.setPageContext(_jspx_page_context);
             _jspx_th_sf_005ferrors_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-            // /WEB-INF/jsp/login.jsp(86,44) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/jsp/login.jsp(89,44) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setCssStyle("color:red;font-size:12px; ");
             int[] _jspx_push_body_count_sf_005ferrors_005f0 = new int[] { 0 };
             try {
@@ -201,9 +206,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f1 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssStyle_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
             _jspx_th_sf_005ferrors_005f1.setPageContext(_jspx_page_context);
             _jspx_th_sf_005ferrors_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-            // /WEB-INF/jsp/login.jsp(91,56) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/jsp/login.jsp(94,56) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f1.setPath("username");
-            // /WEB-INF/jsp/login.jsp(91,56) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/jsp/login.jsp(94,56) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f1.setCssStyle("color:red;font-size:12px; ");
             int[] _jspx_push_body_count_sf_005ferrors_005f1 = new int[] { 0 };
             try {
@@ -231,9 +236,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f2 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssStyle_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
             _jspx_th_sf_005ferrors_005f2.setPageContext(_jspx_page_context);
             _jspx_th_sf_005ferrors_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-            // /WEB-INF/jsp/login.jsp(98,29) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/jsp/login.jsp(101,29) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f2.setPath("password");
-            // /WEB-INF/jsp/login.jsp(98,29) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/jsp/login.jsp(101,29) name = cssStyle type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f2.setCssStyle(" color:red;font-size:12px; ");
             int[] _jspx_push_body_count_sf_005ferrors_005f2 = new int[] { 0 };
             try {
@@ -302,7 +307,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  <tr>\r\n");
       out.write("    <td height=\"20\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"login-buttom-bg\">\r\n");
       out.write("      <tr>\r\n");
-      out.write("        <td align=\"center\"><span class=\"login-buttom-txt\">Copyright &copy; 2013-2015 </span></td>\r\n");
+      out.write("        <td align=\"center\"><span class=\"login-buttom-txt\">Copyright &copy; 2013-2014 绍兴天然气投资有限公司气量调度管理系统  版权所有  北京和利时自动化驱动技术有限公司  技术支持</span></td>\r\n");
       out.write("      </tr>\r\n");
       out.write("    </table></td>\r\n");
       out.write("  </tr>\r\n");
@@ -329,7 +334,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f0 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/login.jsp(91,28) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/login.jsp(94,28) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setPath("username");
     int[] _jspx_push_body_count_sf_005finput_005f0 = new int[] { 0 };
     try {

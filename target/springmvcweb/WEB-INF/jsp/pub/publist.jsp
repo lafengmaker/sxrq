@@ -62,6 +62,25 @@ function del(id){
 function editid(id){
 location="<%=path %>/pub/addNoticeBefore?id="+id;
 }
+function delid(id){
+	var dd=confirm("确认删除这条公告信息？");
+	if(dd){
+	$.ajax({
+	type : "post",
+	url : "pubdel",
+	dataType : "text",
+	data : "id="+id,
+	success : function(msg){
+		alert('删除成功');
+		refresh();
+	},
+	error : function(msg){
+		alert("删除失败");
+	}
+	}
+	);
+	}
+}
 
 function refresh(){
 	$("#currentPage").val(1);
@@ -105,22 +124,27 @@ function refresh(){
             <td height="14" align="center"  class="bordertd" valign="bottom">标题</td>
             <td height="14" align="center"	 class="bordertd" valign="bottom">排序</td>
             <td height="14" align="center"	 class="bordertd" valign="bottom">内容</td>
+            <td height="14" align="center"	 class="bordertd" valign="bottom">截止日期</td>
             <td height="14" align="center"	 class="bordertd" valign="bottom">操作</td>
           </tr>
           <c:forEach items="${pageView.records}" var="pub" varStatus="status">
           <tr>
-            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${pub.title}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${pub.showindex}</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${pub.title}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${pub.showindex}&nbsp;</td>
             <td height="20" align="center" class="bordertd" valign="bottom"> 
             <c:choose> 
             <c:when test="${fn:length(pub.content)>15}">
             	<c:out value="${fn:substring(pub.content,1,15) }"></c:out>
             </c:when>
             <c:otherwise>${pub.content}</c:otherwise>
-            </c:choose>
+            </c:choose>&nbsp;
 	</td>
-            <td height="20" align="center" class="bordertd" valign="bottom"> <input type="button" onclick="editid(${pub.id})" value="修改">     </td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate pattern="yyyy-MM-dd" value="${pub.enddate}"/>&nbsp; </td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> 
+            <input type="button" onclick="editid(${pub.id})" value="修改">   
+            <input type="button" onclick="delid(${pub.id})" value="删除">   
+ </td>
           </tr>
           </c:forEach>
           <tr>
@@ -160,15 +184,5 @@ function refresh(){
     <td valign="bottom" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<div id='adduser' style="width: 700px;height: 400px;" class="pop-box">
-			<div class='tit'>
-				<span class="tittext"></span><img src="<%=path %>/images/pic22.gif"  class="shutbut" onclick="hideDiv('adduser')"/>
-			</div>
-			<div class="pop-box-body">
-				<div id="cusinfoslist"  style="width: 100%;" class="div">
-					<iframe name="adduserfrm" id="adduserfrm"  height="400px" class="divif1"  frameborder=0  width="100%"></iframe>
-				</div>
-			</div>
-</div>
 </body>
 </html>

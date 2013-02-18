@@ -1,17 +1,9 @@
 package com.qqw.test;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import com.lafengmaker.core.entity.SysLog;
-import com.lafengmaker.core.entity.UserSchedule;
-import com.lafengmaker.core.util.MD5Util;
+import com.lafengmaker.core.util.DateUtil;
+import com.lafengmaker.core.util.StringUtil;
 
 
 public class Test {
@@ -30,10 +22,21 @@ public class Test {
 //			ApplicationContext ac=null;
 //			ac.getBean(arg0, arg1)
 //	}
-		Calendar c=Calendar.getInstance();
-		Calendar c1=Calendar.getInstance();
-		c1.set(Calendar.HOUR_OF_DAY, 17);
-		System.out.println(c1.before(c));
-		
+//		Calendar c=Calendar.getInstance();
+//		Calendar c1=Calendar.getInstance();
+//		c1.set(Calendar.HOUR_OF_DAY, 17);
+//		System.out.println(c1.before(c));
+//		String add=StringUtil.readProperty("weekdead",new Test());
+//		System.out.println(add);
+//		DateUtil du=new DateUtil(new DateUtil(new Date()).thisMonday());
+//		Date deadshow= du.add(Calendar.DAY_OF_MONTH, Integer.parseInt(add));
+//		Date deadshowcompare= du.add(Calendar.DAY_OF_MONTH, 1);
+//		System.out.println(Integer.parseInt(add)+1);
+//		System.out.println(deadshow);
+//		System.out.println(deadshowcompare);
+//		if(DateUtil.isDateBefore(new Date(), deadshowcompare)){
+//			System.out.println("=================");
+//		}
+		//TODO  上传附件
 	}
 }

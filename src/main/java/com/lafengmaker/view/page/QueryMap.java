@@ -1,11 +1,14 @@
 package com.lafengmaker.view.page;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.lafengmaker.core.util.DateUtil;
 
 public class QueryMap {
 	private Integer first;
@@ -116,6 +119,17 @@ public class QueryMap {
 		this.max = max;
 		init();
 	}
+	public QueryMap addEqDate(String key,String date){
+		this.ltmap.put(key, new DateUtil(date).getDayEnd());
+		this.gtmap.put(key, new DateUtil(date).getDayFirst());
+		return this;
+	}
+	public QueryMap addEqDate(String key,Date date){
+		this.ltmap.put(key, new DateUtil(date).getDayEnd());
+		this.gtmap.put(key, new DateUtil(date).getDayFirst());
+		return this;
+	}
+	
 	
 	
 	

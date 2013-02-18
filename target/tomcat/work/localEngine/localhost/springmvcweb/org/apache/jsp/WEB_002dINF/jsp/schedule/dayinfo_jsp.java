@@ -15,10 +15,10 @@ public final class dayinfo_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fonClick_005fcssClass_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
@@ -36,10 +36,10 @@ public final class dayinfo_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fonClick_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
@@ -53,10 +53,10 @@ public final class dayinfo_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fonClick_005fcssClass_005fnobody.release();
     _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody.release();
     _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.release();
-    _005fjspx_005ftagPool_005fc_005fchoose.release();
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.release();
     _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.release();
+    _005fjspx_005ftagPool_005fc_005fchoose.release();
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.release();
     _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
@@ -273,233 +273,186 @@ String path=request.getContextPath();
         int _jspx_eval_sf_005fform_005f1 = _jspx_th_sf_005fform_005f1.doStartTag();
         if (_jspx_eval_sf_005fform_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
           do {
-            out.write('\r');
-            out.write('\n');
-            out.write(' ');
+            out.write("\r\n");
+            out.write(" <td colspan=\"4\"><font color=\"red\">当日的填报截止时间是: ");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${deadline}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+            if (_jspx_meth_sf_005fhidden_005f0(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            if (_jspx_meth_sf_005fhidden_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write(" </font></td>\r\n");
+            out.write(" <tr>\r\n");
+            out.write(" <td>用户单位:");
+            if (_jspx_meth_sf_005fhidden_005f2(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write(" </td>\r\n");
+            out.write(" <td>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.buser.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+            out.write("</td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" </tr>\r\n");
+            out.write(" <tr>\r\n");
+            out.write(" <td>指定时间</td>\r\n");
+            out.write(" <td>");
+            if (_jspx_meth_fmt_005fformatDate_005f0(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("&nbsp;8:00 至 ");
+            if (_jspx_meth_fmt_005fformatDate_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("&nbsp;8:00  </td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" </tr>\r\n");
+            out.write(" <tr>\r\n");
+            out.write(" <td>计划状态</td>\r\n");
+            out.write(" <td>\r\n");
+            out.write(" ");
+            if (_jspx_meth_c_005fchoose_005f0(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("\r\n");
+            out.write(" </td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" <td></td>\r\n");
+            out.write(" </tr>\r\n");
+            out.write(" <tr>\r\n");
+            out.write(" <td>周预测量</td>\r\n");
+            out.write(" <td>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.weekforecast}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+            out.write("</td>\r\n");
+            out.write(" <td>周审批量</td>\r\n");
+            out.write(" <td>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.weekplan}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+            out.write("</td>\r\n");
+            out.write(" </tr>\r\n");
+            out.write(" ");
             //  c:choose
-            org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f0 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
-            _jspx_th_c_005fchoose_005f0.setPageContext(_jspx_page_context);
-            _jspx_th_c_005fchoose_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-            int _jspx_eval_c_005fchoose_005f0 = _jspx_th_c_005fchoose_005f0.doStartTag();
-            if (_jspx_eval_c_005fchoose_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+            org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f1 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+            _jspx_th_c_005fchoose_005f1.setPageContext(_jspx_page_context);
+            _jspx_th_c_005fchoose_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            int _jspx_eval_c_005fchoose_005f1 = _jspx_th_c_005fchoose_005f1.doStartTag();
+            if (_jspx_eval_c_005fchoose_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
               do {
                 out.write('\r');
                 out.write('\n');
                 out.write(' ');
                 //  c:when
-                org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-                _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
-                _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-                // /WEB-INF/jsp/schedule/dayinfo.jsp(101,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-                _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!(day.id eq null)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-                int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
-                if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+                org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f3 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+                _jspx_th_c_005fwhen_005f3.setPageContext(_jspx_page_context);
+                _jspx_th_c_005fwhen_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
+                // /WEB-INF/jsp/schedule/dayinfo.jsp(132,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+                _jspx_th_c_005fwhen_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${submitable}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+                int _jspx_eval_c_005fwhen_005f3 = _jspx_th_c_005fwhen_005f3.doStartTag();
+                if (_jspx_eval_c_005fwhen_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
                   do {
                     out.write("\r\n");
-                    out.write(" <td colspan=\"4\"><font color=\"red\">当日的填报截止时间是: ");
-                    out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${deadline}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-                    out.write("</font></td>\r\n");
                     out.write(" <tr>\r\n");
-                    out.write(" <td>用户单位:");
-                    if (_jspx_meth_sf_005fhidden_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+                    out.write(" <td>指定气量</td>\r\n");
+                    out.write(" <td>\r\n");
+                    out.write(" \t");
+                    if (_jspx_meth_sf_005finput_005f1(_jspx_th_c_005fwhen_005f3, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
                       return;
-                    out.write(" </td>\r\n");
-                    out.write(" <td>");
-                    out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.buser.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+                    out.write(' ');
+                    //  sf:errors
+                    org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f2 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+                    _jspx_th_sf_005ferrors_005f2.setPageContext(_jspx_page_context);
+                    _jspx_th_sf_005ferrors_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f3);
+                    // /WEB-INF/jsp/schedule/dayinfo.jsp(136,28) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+                    _jspx_th_sf_005ferrors_005f2.setPath("*");
+                    // /WEB-INF/jsp/schedule/dayinfo.jsp(136,28) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+                    _jspx_th_sf_005ferrors_005f2.setCssClass("errorClass");
+                    int[] _jspx_push_body_count_sf_005ferrors_005f2 = new int[] { 0 };
+                    try {
+                      int _jspx_eval_sf_005ferrors_005f2 = _jspx_th_sf_005ferrors_005f2.doStartTag();
+                      if (_jspx_th_sf_005ferrors_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                        return;
+                      }
+                    } catch (Throwable _jspx_exception) {
+                      while (_jspx_push_body_count_sf_005ferrors_005f2[0]-- > 0)
+                        out = _jspx_page_context.popBody();
+                      _jspx_th_sf_005ferrors_005f2.doCatch(_jspx_exception);
+                    } finally {
+                      _jspx_th_sf_005ferrors_005f2.doFinally();
+                      _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f2);
+                    }
+                    out.write(' ');
+                    out.write(' ');
+                    out.write(' ');
+                    //  sf:errors
+                    org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f3 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+                    _jspx_th_sf_005ferrors_005f3.setPageContext(_jspx_page_context);
+                    _jspx_th_sf_005ferrors_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f3);
+                    // /WEB-INF/jsp/schedule/dayinfo.jsp(136,85) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+                    _jspx_th_sf_005ferrors_005f3.setPath("dayVol");
+                    int[] _jspx_push_body_count_sf_005ferrors_005f3 = new int[] { 0 };
+                    try {
+                      int _jspx_eval_sf_005ferrors_005f3 = _jspx_th_sf_005ferrors_005f3.doStartTag();
+                      if (_jspx_th_sf_005ferrors_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                        return;
+                      }
+                    } catch (Throwable _jspx_exception) {
+                      while (_jspx_push_body_count_sf_005ferrors_005f3[0]-- > 0)
+                        out = _jspx_page_context.popBody();
+                      _jspx_th_sf_005ferrors_005f3.doCatch(_jspx_exception);
+                    } finally {
+                      _jspx_th_sf_005ferrors_005f3.doFinally();
+                      _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody.reuse(_jspx_th_sf_005ferrors_005f3);
+                    }
+                    out.write("\r\n");
                     out.write("</td>\r\n");
                     out.write(" <td></td>\r\n");
                     out.write(" <td></td>\r\n");
                     out.write(" </tr>\r\n");
                     out.write(" <tr>\r\n");
-                    out.write(" <td>指定时间</td>\r\n");
-                    out.write(" <td>");
-                    if (_jspx_meth_fmt_005fformatDate_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                      return;
-                    out.write("&nbsp;8:00 至 ");
-                    if (_jspx_meth_fmt_005fformatDate_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                      return;
-                    out.write("&nbsp;8:00  </td>\r\n");
-                    out.write(" <td></td>\r\n");
-                    out.write(" <td></td>\r\n");
-                    out.write(" </tr>\r\n");
-                    out.write(" <tr>\r\n");
-                    out.write(" <td>计划状态</td>\r\n");
+                    out.write(" <td>用户备注</td>\r\n");
                     out.write(" <td>\r\n");
-                    out.write(" ");
-                    if (_jspx_meth_c_005fchoose_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+                    out.write(" \t");
+                    if (_jspx_meth_sf_005finput_005f2(_jspx_th_c_005fwhen_005f3, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
                       return;
                     out.write("\r\n");
-                    out.write(" </td>\r\n");
-                    out.write(" <td></td>\r\n");
-                    out.write(" <td></td>\r\n");
-                    out.write(" </tr>\r\n");
-                    out.write(" <tr>\r\n");
-                    out.write(" <td>周预测量</td>\r\n");
-                    out.write(" <td>");
-                    out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.weekforecast}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
                     out.write("</td>\r\n");
                     out.write(" <td></td>\r\n");
                     out.write(" <td></td>\r\n");
                     out.write(" </tr>\r\n");
                     out.write(" ");
-                    //  c:choose
-                    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f2 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
-                    _jspx_th_c_005fchoose_005f2.setPageContext(_jspx_page_context);
-                    _jspx_th_c_005fchoose_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-                    int _jspx_eval_c_005fchoose_005f2 = _jspx_th_c_005fchoose_005f2.doStartTag();
-                    if (_jspx_eval_c_005fchoose_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-                      do {
-                        out.write('\r');
-                        out.write('\n');
-                        out.write(' ');
-                        //  c:when
-                        org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f4 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-                        _jspx_th_c_005fwhen_005f4.setPageContext(_jspx_page_context);
-                        _jspx_th_c_005fwhen_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-                        // /WEB-INF/jsp/schedule/dayinfo.jsp(134,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-                        _jspx_th_c_005fwhen_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${submitable}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-                        int _jspx_eval_c_005fwhen_005f4 = _jspx_th_c_005fwhen_005f4.doStartTag();
-                        if (_jspx_eval_c_005fwhen_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-                          do {
-                            out.write("\r\n");
-                            out.write(" <tr>\r\n");
-                            out.write(" <td>指定气量</td>\r\n");
-                            out.write(" <td>\r\n");
-                            out.write(" \t");
-                            if (_jspx_meth_sf_005finput_005f1(_jspx_th_c_005fwhen_005f4, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                              return;
-                            out.write(' ');
-                            //  sf:errors
-                            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f2 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
-                            _jspx_th_sf_005ferrors_005f2.setPageContext(_jspx_page_context);
-                            _jspx_th_sf_005ferrors_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
-                            // /WEB-INF/jsp/schedule/dayinfo.jsp(138,28) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-                            _jspx_th_sf_005ferrors_005f2.setPath("*");
-                            // /WEB-INF/jsp/schedule/dayinfo.jsp(138,28) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-                            _jspx_th_sf_005ferrors_005f2.setCssClass("errorClass");
-                            int[] _jspx_push_body_count_sf_005ferrors_005f2 = new int[] { 0 };
-                            try {
-                              int _jspx_eval_sf_005ferrors_005f2 = _jspx_th_sf_005ferrors_005f2.doStartTag();
-                              if (_jspx_th_sf_005ferrors_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-                              return;
-                              }
-                            } catch (Throwable _jspx_exception) {
-                              while (_jspx_push_body_count_sf_005ferrors_005f2[0]-- > 0)
-                              out = _jspx_page_context.popBody();
-                              _jspx_th_sf_005ferrors_005f2.doCatch(_jspx_exception);
-                            } finally {
-                              _jspx_th_sf_005ferrors_005f2.doFinally();
-                              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f2);
-                            }
-                            out.write(' ');
-                            out.write(' ');
-                            out.write(' ');
-                            //  sf:errors
-                            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f3 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
-                            _jspx_th_sf_005ferrors_005f3.setPageContext(_jspx_page_context);
-                            _jspx_th_sf_005ferrors_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
-                            // /WEB-INF/jsp/schedule/dayinfo.jsp(138,85) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-                            _jspx_th_sf_005ferrors_005f3.setPath("dayVol");
-                            int[] _jspx_push_body_count_sf_005ferrors_005f3 = new int[] { 0 };
-                            try {
-                              int _jspx_eval_sf_005ferrors_005f3 = _jspx_th_sf_005ferrors_005f3.doStartTag();
-                              if (_jspx_th_sf_005ferrors_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-                              return;
-                              }
-                            } catch (Throwable _jspx_exception) {
-                              while (_jspx_push_body_count_sf_005ferrors_005f3[0]-- > 0)
-                              out = _jspx_page_context.popBody();
-                              _jspx_th_sf_005ferrors_005f3.doCatch(_jspx_exception);
-                            } finally {
-                              _jspx_th_sf_005ferrors_005f3.doFinally();
-                              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fnobody.reuse(_jspx_th_sf_005ferrors_005f3);
-                            }
-                            out.write("\r\n");
-                            out.write("</td>\r\n");
-                            out.write(" <td></td>\r\n");
-                            out.write(" <td></td>\r\n");
-                            out.write(" </tr>\r\n");
-                            out.write(" <tr>\r\n");
-                            out.write(" <td>用户备注</td>\r\n");
-                            out.write(" <td>\r\n");
-                            out.write(" \t");
-                            if (_jspx_meth_sf_005finput_005f2(_jspx_th_c_005fwhen_005f4, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                              return;
-                            out.write("\r\n");
-                            out.write("</td>\r\n");
-                            out.write(" <td></td>\r\n");
-                            out.write(" <td></td>\r\n");
-                            out.write(" </tr>\r\n");
-                            out.write(" ");
-                            int evalDoAfterBody = _jspx_th_c_005fwhen_005f4.doAfterBody();
-                            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-                              break;
-                          } while (true);
-                        }
-                        if (_jspx_th_c_005fwhen_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-                          _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f4);
-                          return;
-                        }
-                        _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f4);
-                        out.write('\r');
-                        out.write('\n');
-                        out.write(' ');
-                        if (_jspx_meth_c_005fotherwise_005f0(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                          return;
-                        out.write('\r');
-                        out.write('\n');
-                        out.write(' ');
-                        int evalDoAfterBody = _jspx_th_c_005fchoose_005f2.doAfterBody();
-                        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-                          break;
-                      } while (true);
-                    }
-                    if (_jspx_th_c_005fchoose_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-                      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f2);
-                      return;
-                    }
-                    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f2);
-                    out.write('\r');
-                    out.write('\n');
-                    out.write(' ');
-                    if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                      return;
-                    out.write('\r');
-                    out.write('\n');
-                    out.write(' ');
-                    if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-                      return;
-                    out.write('\r');
-                    out.write('\n');
-                    out.write(' ');
-                    int evalDoAfterBody = _jspx_th_c_005fwhen_005f0.doAfterBody();
+                    int evalDoAfterBody = _jspx_th_c_005fwhen_005f3.doAfterBody();
                     if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
                       break;
                   } while (true);
                 }
-                if (_jspx_th_c_005fwhen_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-                  _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f0);
+                if (_jspx_th_c_005fwhen_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                  _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f3);
                   return;
                 }
-                _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f0);
+                _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f3);
                 out.write('\r');
                 out.write('\n');
                 out.write(' ');
-                if (_jspx_meth_c_005fotherwise_005f1(_jspx_th_c_005fchoose_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+                if (_jspx_meth_c_005fotherwise_005f0(_jspx_th_c_005fchoose_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
                   return;
                 out.write('\r');
                 out.write('\n');
                 out.write(' ');
-                int evalDoAfterBody = _jspx_th_c_005fchoose_005f0.doAfterBody();
+                int evalDoAfterBody = _jspx_th_c_005fchoose_005f1.doAfterBody();
                 if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
                   break;
               } while (true);
             }
-            if (_jspx_th_c_005fchoose_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-              _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f0);
+            if (_jspx_th_c_005fchoose_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+              _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
               return;
             }
-            _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f0);
+            _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
+            out.write('\r');
+            out.write('\n');
+            out.write(' ');
+            if (_jspx_meth_c_005fif_005f0(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write('\r');
+            out.write('\n');
+            out.write(' ');
+            if (_jspx_meth_c_005fchoose_005f2(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
             out.write('\r');
             out.write('\n');
             out.write(' ');
@@ -687,16 +640,16 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_sf_005fhidden_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005fhidden_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:hidden
     org.springframework.web.servlet.tags.form.HiddenInputTag _jspx_th_sf_005fhidden_005f0 = (org.springframework.web.servlet.tags.form.HiddenInputTag) _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.HiddenInputTag.class);
     _jspx_th_sf_005fhidden_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005fhidden_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(104,10) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fhidden_005f0.setPath("id");
+    _jspx_th_sf_005fhidden_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(100,58) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fhidden_005f0.setPath("cdate");
     int[] _jspx_push_body_count_sf_005fhidden_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_sf_005fhidden_005f0 = _jspx_th_sf_005fhidden_005f0.doStartTag();
@@ -714,17 +667,71 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_fmt_005fformatDate_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005fhidden_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sf:hidden
+    org.springframework.web.servlet.tags.form.HiddenInputTag _jspx_th_sf_005fhidden_005f1 = (org.springframework.web.servlet.tags.form.HiddenInputTag) _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.HiddenInputTag.class);
+    _jspx_th_sf_005fhidden_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_sf_005fhidden_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(100,83) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fhidden_005f1.setPath("userid");
+    int[] _jspx_push_body_count_sf_005fhidden_005f1 = new int[] { 0 };
+    try {
+      int _jspx_eval_sf_005fhidden_005f1 = _jspx_th_sf_005fhidden_005f1.doStartTag();
+      if (_jspx_th_sf_005fhidden_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sf_005fhidden_005f1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sf_005fhidden_005f1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sf_005fhidden_005f1.doFinally();
+      _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.reuse(_jspx_th_sf_005fhidden_005f1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_sf_005fhidden_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sf:hidden
+    org.springframework.web.servlet.tags.form.HiddenInputTag _jspx_th_sf_005fhidden_005f2 = (org.springframework.web.servlet.tags.form.HiddenInputTag) _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.HiddenInputTag.class);
+    _jspx_th_sf_005fhidden_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_sf_005fhidden_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(102,10) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fhidden_005f2.setPath("id");
+    int[] _jspx_push_body_count_sf_005fhidden_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_sf_005fhidden_005f2 = _jspx_th_sf_005fhidden_005f2.doStartTag();
+      if (_jspx_th_sf_005fhidden_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sf_005fhidden_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sf_005fhidden_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sf_005fhidden_005f2.doFinally();
+      _005fjspx_005ftagPool_005fsf_005fhidden_0026_005fpath_005fnobody.reuse(_jspx_th_sf_005fhidden_005f2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_005fformatDate_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  fmt:formatDate
     org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_005fformatDate_005f0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
     _jspx_th_fmt_005fformatDate_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_005fformatDate_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(111,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_fmt_005fformatDate_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(109,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_fmt_005fformatDate_005f0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.cdate}", java.util.Date.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(111,5) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(109,5) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_fmt_005fformatDate_005f0.setPattern("yyyy-MM-dd");
     int _jspx_eval_fmt_005fformatDate_005f0 = _jspx_th_fmt_005fformatDate_005f0.doStartTag();
     if (_jspx_th_fmt_005fformatDate_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -735,17 +742,17 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_fmt_005fformatDate_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_fmt_005fformatDate_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  fmt:formatDate
     org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_005fformatDate_005f1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
     _jspx_th_fmt_005fformatDate_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_005fformatDate_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(111,77) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_fmt_005fformatDate_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(109,77) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_fmt_005fformatDate_005f1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day1}", java.util.Date.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(111,77) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(109,77) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_fmt_005fformatDate_005f1.setPattern("yyyy-MM-dd");
     int _jspx_eval_fmt_005fformatDate_005f1 = _jspx_th_fmt_005fformatDate_005f1.doStartTag();
     if (_jspx_th_fmt_005fformatDate_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -756,64 +763,91 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fchoose_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fchoose_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:choose
-    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f1 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
-    _jspx_th_c_005fchoose_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fchoose_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    int _jspx_eval_c_005fchoose_005f1 = _jspx_th_c_005fchoose_005f1.doStartTag();
-    if (_jspx_eval_c_005fchoose_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f0 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+    _jspx_th_c_005fchoose_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fchoose_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    int _jspx_eval_c_005fchoose_005f0 = _jspx_th_c_005fchoose_005f0.doStartTag();
+    if (_jspx_eval_c_005fchoose_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write('\r');
         out.write('\n');
         out.write(' ');
-        if (_jspx_meth_c_005fwhen_005f1(_jspx_th_c_005fchoose_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+        if (_jspx_meth_c_005fwhen_005f0(_jspx_th_c_005fchoose_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
           return true;
         out.write('\r');
         out.write('\n');
         out.write(' ');
-        if (_jspx_meth_c_005fwhen_005f2(_jspx_th_c_005fchoose_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+        if (_jspx_meth_c_005fwhen_005f1(_jspx_th_c_005fchoose_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
           return true;
         out.write('\r');
         out.write('\n');
         out.write(' ');
-        if (_jspx_meth_c_005fwhen_005f3(_jspx_th_c_005fchoose_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+        if (_jspx_meth_c_005fwhen_005f2(_jspx_th_c_005fchoose_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
           return true;
         out.write('\r');
         out.write('\n');
         out.write(' ');
-        int evalDoAfterBody = _jspx_th_c_005fchoose_005f1.doAfterBody();
+        int evalDoAfterBody = _jspx_th_c_005fchoose_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
       } while (true);
     }
-    if (_jspx_th_c_005fchoose_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
+    if (_jspx_th_c_005fchoose_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f0);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
+    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f0);
     return false;
   }
 
-  private boolean _jspx_meth_c_005fwhen_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fwhen_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(117,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='0'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write('未');
+        out.write('提');
+        out.write('交');
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:when
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='0'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(118,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write('未');
-        out.write('提');
-        out.write('交');
+        out.write("已提交待审批");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -827,20 +861,22 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fwhen_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fwhen_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:when
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(120,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='2'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("已提交待审批");
+        out.write('已');
+        out.write('审');
+        out.write('批');
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -854,44 +890,15 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fwhen_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f3 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(121,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='2'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f3 = _jspx_th_c_005fwhen_005f3.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write('已');
-        out.write('审');
-        out.write('批');
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f3.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f3);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f3);
-    return false;
-  }
-
-  private boolean _jspx_meth_sf_005finput_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f4, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005finput_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:input
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(138,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f3);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(136,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f1.setPath("dayVol");
     int[] _jspx_push_body_count_sf_005finput_005f1 = new int[] { 0 };
     try {
@@ -910,15 +917,15 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_sf_005finput_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f4, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005finput_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:input
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(146,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f3);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(144,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f2.setPath("description");
     int[] _jspx_push_body_count_sf_005finput_005f2 = new int[] { 0 };
     try {
@@ -937,14 +944,14 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fotherwise_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fotherwise_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:otherwise
     org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f0 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
     _jspx_th_c_005fotherwise_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fotherwise_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    _jspx_th_c_005fotherwise_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
     int _jspx_eval_c_005fotherwise_005f0 = _jspx_th_c_005fotherwise_005f0.doStartTag();
     if (_jspx_eval_c_005fotherwise_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -956,14 +963,18 @@ String path=request.getContextPath();
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.dayVol}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("\r\n");
         out.write("</td>\r\n");
-        out.write(" <td></td>\r\n");
-        out.write(" <td></td>\r\n");
-        out.write(" </tr>\r\n");
-        out.write(" <tr>\r\n");
         out.write(" <td>用户备注</td>\r\n");
         out.write(" <td>\r\n");
         out.write(" \t");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\r\n");
+        out.write("</td>\r\n");
+        out.write(" </tr>\r\n");
+        out.write(" <tr>\r\n");
+        out.write(" <td>审批气量</td>\r\n");
+        out.write(" <td>\r\n");
+        out.write(" \t");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.accVol}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("\r\n");
         out.write("</td>\r\n");
         out.write(" <td></td>\r\n");
@@ -983,16 +994,16 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:if
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
+    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
     // /WEB-INF/jsp/schedule/dayinfo.jsp(171,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.status=='0'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${submitable}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1016,62 +1027,101 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fif_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fchoose_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(178,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${changeable}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
-    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+    //  c:choose
+    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f2 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+    _jspx_th_c_005fchoose_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fchoose_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    int _jspx_eval_c_005fchoose_005f2 = _jspx_th_c_005fchoose_005f2.doStartTag();
+    if (_jspx_eval_c_005fchoose_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write('\r');
+        out.write('\n');
+        out.write(' ');
+        if (_jspx_meth_c_005fwhen_005f4(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write(' ');
+        if (_jspx_meth_c_005fotherwise_005f1(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write(' ');
+        int evalDoAfterBody = _jspx_th_c_005fchoose_005f2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fchoose_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f4 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(179,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${changeable}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f4 = _jspx_th_c_005fwhen_005f4.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write(" <tr>\r\n");
         out.write(" <td>变更气量</td>\r\n");
         out.write(" <td>\r\n");
         out.write(" \t");
-        if (_jspx_meth_sf_005finput_005f3(_jspx_th_c_005fif_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+        if (_jspx_meth_sf_005finput_005f3(_jspx_th_c_005fwhen_005f4, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
           return true;
         out.write("\r\n");
         out.write("</td>\r\n");
         out.write(" <td>变更备注</td>\r\n");
         out.write(" <td>\r\n");
         out.write(" ");
-        if (_jspx_meth_sf_005finput_005f4(_jspx_th_c_005fif_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+        if (_jspx_meth_sf_005finput_005f4(_jspx_th_c_005fwhen_005f4, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
           return true;
         out.write("\r\n");
         out.write(" </td>\r\n");
         out.write(" </tr>\r\n");
         out.write(" <tr>\r\n");
-        out.write(" <td colspan=\"4\"><input type=\"submit\" value=\"变更\"> </td>\r\n");
+        out.write(" <td colspan=\"4\">\r\n");
+        out.write("  <input type=\"hidden\" value=\"2\" name=\"type\">\r\n");
+        out.write(" <input type=\"submit\" value=\"变更\"> </td>\r\n");
         out.write(" </tr>\r\n");
         out.write(" ");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f4.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
       } while (true);
     }
-    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+    if (_jspx_th_c_005fwhen_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f4);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f4);
     return false;
   }
 
-  private boolean _jspx_meth_sf_005finput_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005finput_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f4, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:input
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(182,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(183,2) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f3.setPath("changeVol");
     int[] _jspx_push_body_count_sf_005finput_005f3 = new int[] { 0 };
     try {
@@ -1090,15 +1140,15 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_sf_005finput_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_sf_005finput_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f4, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:input
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f4 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f4.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005finput_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
-    // /WEB-INF/jsp/schedule/dayinfo.jsp(186,1) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f4);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(187,1) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f4.setPath("changedesc");
     int[] _jspx_push_body_count_sf_005finput_005f4 = new int[] { 0 };
     try {
@@ -1117,22 +1167,24 @@ String path=request.getContextPath();
     return false;
   }
 
-  private boolean _jspx_meth_c_005fotherwise_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+  private boolean _jspx_meth_c_005fotherwise_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:otherwise
     org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f1 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
     _jspx_th_c_005fotherwise_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fotherwise_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
+    _jspx_th_c_005fotherwise_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
     int _jspx_eval_c_005fotherwise_005f1 = _jspx_th_c_005fotherwise_005f1.doStartTag();
     if (_jspx_eval_c_005fotherwise_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write(" <tr>\r\n");
-        out.write(" <td colspan=\"4\">没有当日数据</td>\r\n");
-        out.write(" </tr>\r\n");
-        out.write(" ");
+        out.write("  ");
+        if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fotherwise_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write(' ');
         int evalDoAfterBody = _jspx_th_c_005fotherwise_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1143,6 +1195,48 @@ String path=request.getContextPath();
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f1);
+    // /WEB-INF/jsp/schedule/dayinfo.jsp(197,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(false);
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("  <tr>\r\n");
+        out.write(" <td>变更气量</td>\r\n");
+        out.write(" <td>\r\n");
+        out.write(" \t");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.changeVol}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\r\n");
+        out.write("</td>\r\n");
+        out.write(" <td>变更备注</td>\r\n");
+        out.write(" <td>\r\n");
+        out.write(" ");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${day.changedesc}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\r\n");
+        out.write(" </td>\r\n");
+        out.write(" </tr>\r\n");
+        out.write(" ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
     return false;
   }
 }

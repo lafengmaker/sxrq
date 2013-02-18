@@ -584,7 +584,7 @@ public static void main(String[] args) {
 //		i++;
 //	}
 	try {
-		System.out.println(encryptBASE64("2013-1-1".getBytes()));
+		System.out.println(encryptBASE64("2013-4-1".getBytes()));
 		String date=StringUtil.readProperty("key", new User());
 		//date="";
 		System.out.println(DateUtil.formatStringTodate(StringUtil.decrypt(date), DateUtil.DATE));

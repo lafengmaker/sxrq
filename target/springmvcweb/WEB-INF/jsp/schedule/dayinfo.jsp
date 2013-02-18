@@ -97,9 +97,7 @@ function refresh(){
  <sf:errors path="userSchedule.dayVol" cssClass="errorClass"></sf:errors>
  <sf:errors path="userSchedule.changeVol" cssClass="errorClass"></sf:errors>
   <sf:form modelAttribute="day" action="daysubmit">
- <c:choose>
- <c:when test="${!(day.id eq null)}">
- <td colspan="4"><font color="red">当日的填报截止时间是: ${deadline}</font></td>
+ <td colspan="4"><font color="red">当日的填报截止时间是: ${deadline}<sf:hidden path="cdate"/><sf:hidden path="userid"/> </font></td>
  <tr>
  <td>用户单位:<sf:hidden path="id"/> </td>
  <td>${day.buser.name}</td>
@@ -127,8 +125,8 @@ function refresh(){
  <tr>
  <td>周预测量</td>
  <td>${day.weekforecast}</td>
- <td></td>
- <td></td>
+ <td>周审批量</td>
+ <td>${day.weekplan}</td>
  </tr>
  <c:choose>
  <c:when test="${submitable}">
@@ -155,27 +153,30 @@ function refresh(){
  <td>
  	${day.dayVol}
 </td>
- <td></td>
- <td></td>
- </tr>
- <tr>
  <td>用户备注</td>
  <td>
  	${day.description}
+</td>
+ </tr>
+ <tr>
+ <td>审批气量</td>
+ <td>
+ 	${day.accVol}
 </td>
  <td></td>
  <td></td>
  </tr>
  </c:otherwise>
  </c:choose>
- <c:if test="${day.status=='0'}">
+ <c:if test="${submitable}">
  <tr>
  <td colspan="4">
  <input type="hidden" value="1" name="type">
  <input type="submit" value="提交"> </td>
  </tr>
  </c:if>
- <c:if test="${changeable}">
+ <c:choose>
+ <c:when test="${changeable}">
  <tr>
  <td>变更气量</td>
  <td>
@@ -187,14 +188,24 @@ function refresh(){
  </td>
  </tr>
  <tr>
- <td colspan="4"><input type="submit" value="变更"> </td>
+ <td colspan="4">
+  <input type="hidden" value="2" name="type">
+ <input type="submit" value="变更"> </td>
  </tr>
- </c:if>
  </c:when>
  <c:otherwise>
- <tr>
- <td colspan="4">没有当日数据</td>
+  <c:if test="submitable">
+  <tr>
+ <td>变更气量</td>
+ <td>
+ 	${day.changeVol}
+</td>
+ <td>变更备注</td>
+ <td>
+ ${day.changedesc}
+ </td>
  </tr>
+ </c:if>
  </c:otherwise>
  </c:choose>
  </sf:form>	

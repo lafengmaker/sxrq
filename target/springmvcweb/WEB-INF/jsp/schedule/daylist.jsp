@@ -33,6 +33,9 @@ body {
 <script language="javascript" type="text/javascript" src="<%=path %>/js/jquery-1.7.2.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/flow.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/iframe.js"></script>
+<script language="javascript" type="text/javascript" src="<%=path %>/js/regexval.js"></script>
+<script language="javascript" type="text/javascript" src="<%=path %>/js/printpage.js"></script>
+
 <script type="text/javascript">
 function addnewuser(id){
 	if(id){
@@ -65,6 +68,48 @@ function refresh(){
 	$("#currentPage").val(1);
 	$("#userfrom").submit();
 }
+function changeacv(obj,v,id){
+	var ht=v+"<input type='text' id='"+id+"' name='accVol' class='acvclass' />";
+	$(obj).parent().html(ht);
+	
+}
+function changesubmit(){
+	var j="[";
+	var x;
+	$(".acvclass").each(function(index){
+		x=index+1;
+		if(index>0){
+			j+=","
+		}
+		var m=$(this).val();
+		if(m&&!numberchechk('m',m)){
+			alert('审批量数据格式不正确!');
+			x=null;
+			return ;
+			
+		}
+		j+="{'"+$(this).attr("name")+"':'"+m+"','id':'"+$(this).attr("id")+"'}";
+	});
+	j+="]";
+	if(x){
+		$.ajax({
+			   type : 'post',
+			   url: "daydataCheck",
+			   dataType:'text',
+			   data :"p="+ j,
+			   success: function(data){
+			           $(".acvclass").each(function(){
+			        	   $(this).parent().html($(this).val());
+			        	   $(this).remove();
+			           });
+			           alert('提交成功');
+			   },
+			   error:function(e){
+				   alert('失败'+e);
+			   }
+			});
+	}
+}
 </script>
 </head>
 <body>
@@ -92,11 +137,15 @@ function refresh(){
         <sf:form modelAttribute="search" action="daylist" id="userfrom">
         <input name="currpage" type="hidden" id="currentPage"  >
         <table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
-          <tr>
+          <tr class="title">
             <td height="27" class="bordertd" colspan="7" background="<%=path %>/images/news-title-bg.gif"><img src="<%=path %>/images/news-title-bg.gif" width="2" height="27"></td>
           </tr>
           <tr>
-            <td height="14" align="center" class="bordertd" colspan="7" >开始时间: <input id="sdate" type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')}'})"  class="Wdate" value="${search.date}"  name="date"/>结束时间:<input id="enddate" name="enddate" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'sdate\')}'})" type="text" value="${search.enddate}"> <input type="submit" value="搜索"> </td>
+            <td height="14" align="center" class="bordertd" colspan="7" >
+            	开始时间: <input id="sdate" type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')}'})"  class="Wdate" value="${search.date}"  name="date"/>
+            	结束时间:<input id="enddate" name="enddate" class="Wdate" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'sdate\')}'})" type="text" value="${search.enddate}"> 
+            	用户:		<sf:select disabled="${userdiable}" path="userid" items="${userlist}" itemLabel="name" itemValue="id"></sf:select>
+            	<input type="submit" value="搜索"> </td>
           </tr>
           <tr>
             <td height="14" align="center"  class="bordertd" valign="bottom">序号</td>
@@ -104,25 +153,44 @@ function refresh(){
             <td height="14" align="center"	 class="bordertd" valign="bottom">时间</td>
             <td height="14" align="center"	 class="bordertd" valign="bottom">计划量</td>
             <td height="14" align="center" class="bordertd" valign="bottom">变更量</td>
-            <td height="14" align="center" class="bordertd" valign="bottom">用户备注</td>
-            <td height="14" align="center" class="bordertd" valign="bottom">市场部备注</td>
+            <td height="14" align="center" class="bordertd" valign="bottom">审批量</td>
+            <td height="14" align="center" class="bordertd" valign="bottom">备注</td>
           </tr>
+          <c:set var="dt" value="${0}"></c:set>
+          <c:set var="ct" value="${0}"></c:set>
+          <c:set var="at" value="${0}"></c:set>
           <c:forEach items="${pageView.records}" var="us" varStatus="status">
           <tr>
-            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.buser.name}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate value="${us.cdate}" pattern="yyyy-MM-dd" /> </td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.dayVol}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.changeVol}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.description}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.buser.name}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate value="${us.cdate}" pattern="yyyy-MM-dd" /> &nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.dayVol}&nbsp;<c:set var="dt" value="${dt+us.dayVol}"/>  </td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.changeVol}&nbsp;<c:set var="ct" value="${ct+us.changeVol}"/></td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.accVol}&nbsp;<c:set var="at" value="${at+us.accVol}"/>
+            <c:if test="${user.role==1}">
+            <span class="sec1" onclick="changeacv(this,${us.accVol+'0'},${us.id})"> &nbsp;&nbsp;审批&nbsp;&nbsp;</span>
+            </c:if>
+            &nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.description}&nbsp;</td>
           </tr>
           </c:forEach>
-          <!-- <tr>
-           <td height="15" colspan="5">&nbsp;&nbsp;<span class="sec1" onclick="addnewuser('')"> &nbsp;&nbsp;新增用户&nbsp;&nbsp;</span></td>
-          </tr> -->
           <tr>
-            <td height="5" colspan="5">&nbsp;</td>
+            <td height="20" align="center" colspan="3" class="bordertd" valign="bottom">合计</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatNumber maxFractionDigits="2" value="${dt}"></fmt:formatNumber>&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"><fmt:formatNumber maxFractionDigits="2" value="${ct}"></fmt:formatNumber>&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatNumber maxFractionDigits="2" value="${at}"></fmt:formatNumber> &nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">&nbsp;</td>
+          </tr>
+          <tr class="np">
+           <td height="15" colspan="7">
+           <c:if test="${user.role==1}">
+           &nbsp;&nbsp;<span class="sec1" onclick="printTure()"> &nbsp;&nbsp;打印&nbsp;&nbsp;</span>
+           &nbsp;&nbsp;<span class="sec1" onclick="changesubmit()"> &nbsp;&nbsp;提交审批&nbsp;&nbsp;</span>
+           </c:if>
+           </td>
+          </tr>
+          <tr class="np">
+            <td height="5" colspan="7">&nbsp;</td>
           </tr>
         </table>
         </sf:form>
@@ -158,7 +226,7 @@ function refresh(){
     <td valign="bottom" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<div id='adduser' style="width: 700px;height: 400px;" class="pop-box">
+<div id='adduser' style="width: 700px;height: 400px; display:none;" class="pop-box">
 			<div class='tit'>
 				<span class="tittext"></span><img src="<%=path %>/images/pic22.gif"  class="shutbut" onclick="hideDiv('adduser')"/>
 			</div>
@@ -168,5 +236,8 @@ function refresh(){
 				</div>
 			</div>
 </div>
+<input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="清空页码" onclick="pagesetup_null()">&nbsp;&nbsp;
+<input type="hidden" class="tab" value="恢复页码" onclick="pagesetup_default()">
+<div id="print" style="width:950px; border:0px red solid; display:none"></div>
 </body>
 </html>

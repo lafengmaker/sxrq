@@ -15,4 +15,7 @@ public interface UserService {
 	public User getUserByid(Long id);
 	public UserView repassword(UserView userView);
 	public List<User> getAllUser();
+	public List<User> getcommUser();
+	public List<User> getcommUserNoEmpty();
+	
 }

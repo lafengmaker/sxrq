@@ -15,21 +15,21 @@
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		">
-      <bean id="SpringQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+      <!-- <bean id="SpringQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
             <ref bean="jobManage"/>
         </property>
-        <property name="targetMethod">  <!-- 要执行的方法名称 -->
+        <property name="targetMethod">  要执行的方法名称
             <value>insertWeekData</value>
         </property>
     </bean>
-    <!-- ======================== 调度触发器 ======================== -->
+    ======================== 调度触发器 ========================
     <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="SpringQtzJobMethod"></property>
-        <!-- <property name="cronExpression" value="0/1 * * * * ?"></property> -->
-        <property name="cronExpression" value="0 0 */1 * * ?"></property>
-       <!--  <property name="cronExpression" value="0 0 0/1 * * ?"></property> -->
-    </bean>
+        <property name="cronExpression" value="0/1 * * * * ?"></property>
+        <property name="cronExpression" value="0 0 */3 * * ?"></property>
+        <property name="cronExpression" value="0 0/1 * * * ?"></property>
+    </bean> -->
       <bean id="dayupdate" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
             <ref bean="jobManage"/>
@@ -42,14 +42,14 @@
     <bean id="dayCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="dayupdate"></property>
         <!-- <property name="cronExpression" value="0/1 * * * * ?"></property> -->
-        <property name="cronExpression" value="0 0 0/1 * * ?"></property>
+        <property name="cronExpression" value="0 0/10 9-10 * * ?"></property>
        <!--  <property name="cronExpression" value="0 0 0/1 * * ?"></property> -->
     </bean>
     <!-- ======================== 调度工厂 ======================== -->
     <bean id="SpringJobSchedulerFactoryBean" lazy-init="default" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <ref bean="CronTriggerBean"/>
+                <!-- <ref bean="CronTriggerBean"/> -->
                 <ref bean="dayCronTriggerBean"/>
             </list>
         </property>

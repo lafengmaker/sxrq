@@ -33,9 +33,14 @@ body {
 <script language="javascript" type="text/javascript" src="<%=path %>/js/jquery-1.7.2.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/flow.js"></script>
 <script language="javascript" type="text/javascript" src="<%=path %>/js/iframe.js"></script>
+<script language="javascript" type="text/javascript" src="<%=path %>/js/printpage.js"></script>
 <script type="text/javascript">
 function addgasuse(id){
-	document.getElementById("adduserfrm").src="<%=path %>/gasuse/gasaddbefore";
+	var endfix="";
+	if(id){
+		endfix="?p="+id
+	}
+	document.getElementById("adduserfrm").src="<%=path %>/gasuse/gasaddbefore"+endfix;
 	popupDiv('adduser',200);
 }
 function del(id){
@@ -89,7 +94,7 @@ function refresh(){
         <sf:form id="userfrom" modelAttribute="search" action="uselist">
         <input name="currpage" type="hidden" id="currentPage"  >
         <table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
-          <tr>
+          <tr class="title">
             <td height="27" class="bordertd" colspan="7" background="<%=path %>/images/news-title-bg.gif"><img src="<%=path %>/images/news-title-bg.gif" width="2" height="27"></td>
           </tr>
           <tr>
@@ -101,26 +106,34 @@ function refresh(){
             <td height="14" align="center"	 class="bordertd" valign="bottom">日期</td>
             <td height="14" align="center"	 class="bordertd" valign="bottom">用气量</td>
             <td height="14" align="center" class="bordertd" valign="bottom">备注</td>
-            <td height="14" align="center" class="bordertd" valign="bottom"></td>
+            <td height="14" align="center" class="bordertd" valign="bottom">操作</td>
           </tr>
+           <c:set var="total" value="${0}"/>
           <c:forEach items="${pageView.records}" var="us" varStatus="status">
           <tr>
-            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.buser.name}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate value="${us.addtime}" pattern="yyyy-MM-dd hh:mm:ss" /> </td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.gasvol}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom">${us.description}</td>
-            <td height="20" align="center" class="bordertd" valign="bottom"></td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${status.index+1}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.buser.name}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <fmt:formatDate value="${us.addtime}" pattern="yyyy-MM-dd" /> &nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.gasvol}&nbsp;<c:set var="total" value="${total+us.gasvol}"/></td>
+            <td height="20" align="center" class="bordertd" valign="bottom">${us.description}&nbsp;</td>
+            <td height="20" align="center" class="bordertd" valign="bottom"> <c:if test="${user.role=='1'}"><span class="sec1" onclick="addgasuse(${us.id})"> &nbsp;&nbsp;修改&nbsp;</span></c:if>&nbsp;</td>
           </tr>
           </c:forEach>
           <tr>
+          <td class="bordertd" valign="bottom" colspan="3" align="center">合计</td>
+          <td class="bordertd" valign="bottom" align="center" ><fmt:formatNumber maxFractionDigits="2" value="${total}"></fmt:formatNumber>&nbsp;</td>
+          <td class="bordertd" valign="bottom">&nbsp;</td>
+          <td class="bordertd" valign="bottom">&nbsp;</td>
+          </tr>
+          <tr class="np">
            <td height="15" colspan="5">&nbsp;&nbsp;
            <c:if test="${user.role=='1'}">
-           <span class="sec1" onclick="addgasuse()"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span>
+           <span class="sec1" onclick="addgasuse('')"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span>
+           &nbsp;&nbsp;<span class="sec1" onclick="printTure()"> 打印&nbsp;&nbsp;&nbsp;&nbsp;</span>
            </c:if>
            </td>
           </tr>
-          <tr>
+          <tr class="np">
             <td height="5" colspan="5">&nbsp;</td>
           </tr>
         </table>
@@ -157,7 +170,7 @@ function refresh(){
     <td valign="bottom" background="<%=path %>/images/mail_rightbg.gif"><img src="<%=path %>/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<div id='adduser' style="width: 700px;height: 400px;" class="pop-box">
+<div id='adduser' style="width: 700px;height: 400px; display:none" class="pop-box">
 			<div class='tit'>
 				<span class="tittext"></span><img src="<%=path %>/images/pic22.gif"  class="shutbut" onclick="hideDiv('adduser')"/>
 			</div>
@@ -167,5 +180,6 @@ function refresh(){
 				</div>
 			</div>
 </div>
+<div id="print" style=" border:0px red solid; display:none"></div>
 </body>
 </html>

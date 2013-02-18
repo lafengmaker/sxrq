@@ -14,9 +14,11 @@ public final class gasuselist_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fid_005faction;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -28,9 +30,11 @@ public final class gasuselist_jsp extends org.apache.jasper.runtime.HttpJspBase
   public void _jspInit() {
     _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fid_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -38,9 +42,11 @@ public final class gasuselist_jsp extends org.apache.jasper.runtime.HttpJspBase
   public void _jspDestroy() {
     _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fid_005faction.release();
     _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody.release();
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.release();
     _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
+    _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -115,11 +121,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script language=\"javascript\" type=\"text/javascript\" src=\"");
       out.print(path );
       out.write("/js/iframe.js\"></script>\r\n");
+      out.write("<script language=\"javascript\" type=\"text/javascript\" src=\"");
+      out.print(path );
+      out.write("/js/printpage.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\">\r\n");
       out.write("function addgasuse(id){\r\n");
+      out.write("\tvar endfix=\"\";\r\n");
+      out.write("\tif(id){\r\n");
+      out.write("\t\tendfix=\"?p=\"+id\r\n");
+      out.write("\t}\r\n");
       out.write("\tdocument.getElementById(\"adduserfrm\").src=\"");
       out.print(path );
-      out.write("/gasuse/gasaddbefore\";\r\n");
+      out.write("/gasuse/gasaddbefore\"+endfix;\r\n");
       out.write("\tpopupDiv('adduser',200);\r\n");
       out.write("}\r\n");
       out.write("function del(id){\r\n");
@@ -187,11 +200,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fid_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
       _jspx_th_sf_005fform_005f0.setPageContext(_jspx_page_context);
       _jspx_th_sf_005fform_005f0.setParent(null);
-      // /WEB-INF/jsp/gas/gasuselist.jsp(89,8) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/gas/gasuselist.jsp(94,8) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setId("userfrom");
-      // /WEB-INF/jsp/gas/gasuselist.jsp(89,8) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/gas/gasuselist.jsp(94,8) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setModelAttribute("search");
-      // /WEB-INF/jsp/gas/gasuselist.jsp(89,8) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/jsp/gas/gasuselist.jsp(94,8) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setAction("uselist");
       int[] _jspx_push_body_count_sf_005fform_005f0 = new int[] { 0 };
       try {
@@ -201,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             out.write("\r\n");
             out.write("        <input name=\"currpage\" type=\"hidden\" id=\"currentPage\"  >\r\n");
             out.write("        <table width=\"100%\" height=\"144\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"line_table\">\r\n");
-            out.write("          <tr>\r\n");
+            out.write("          <tr class=\"title\">\r\n");
             out.write("            <td height=\"27\" class=\"bordertd\" colspan=\"7\" background=\"");
             out.print(path );
             out.write("/images/news-title-bg.gif\"><img src=\"");
@@ -224,21 +237,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             out.write("            <td height=\"14\" align=\"center\"\t class=\"bordertd\" valign=\"bottom\">日期</td>\r\n");
             out.write("            <td height=\"14\" align=\"center\"\t class=\"bordertd\" valign=\"bottom\">用气量</td>\r\n");
             out.write("            <td height=\"14\" align=\"center\" class=\"bordertd\" valign=\"bottom\">备注</td>\r\n");
-            out.write("            <td height=\"14\" align=\"center\" class=\"bordertd\" valign=\"bottom\"></td>\r\n");
+            out.write("            <td height=\"14\" align=\"center\" class=\"bordertd\" valign=\"bottom\">操作</td>\r\n");
             out.write("          </tr>\r\n");
+            out.write("           ");
+            if (_jspx_meth_c_005fset_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
+              return;
+            out.write("\r\n");
             out.write("          ");
             if (_jspx_meth_c_005fforEach_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
               return;
             out.write("\r\n");
             out.write("          <tr>\r\n");
+            out.write("          <td class=\"bordertd\" valign=\"bottom\" colspan=\"3\" align=\"center\">合计</td>\r\n");
+            out.write("          <td class=\"bordertd\" valign=\"bottom\" align=\"center\" >");
+            if (_jspx_meth_fmt_005fformatNumber_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
+              return;
+            out.write("&nbsp;</td>\r\n");
+            out.write("          <td class=\"bordertd\" valign=\"bottom\">&nbsp;</td>\r\n");
+            out.write("          <td class=\"bordertd\" valign=\"bottom\">&nbsp;</td>\r\n");
+            out.write("          </tr>\r\n");
+            out.write("          <tr class=\"np\">\r\n");
             out.write("           <td height=\"15\" colspan=\"5\">&nbsp;&nbsp;\r\n");
             out.write("           ");
-            if (_jspx_meth_c_005fif_005f0(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
+            if (_jspx_meth_c_005fif_005f1(_jspx_th_sf_005fform_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f0))
               return;
             out.write("\r\n");
             out.write("           </td>\r\n");
             out.write("          </tr>\r\n");
-            out.write("          <tr>\r\n");
+            out.write("          <tr class=\"np\">\r\n");
             out.write("            <td height=\"5\" colspan=\"5\">&nbsp;</td>\r\n");
             out.write("          </tr>\r\n");
             out.write("        </table>\r\n");
@@ -308,7 +334,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("/images/buttom_right2.gif\" width=\"16\" height=\"17\" /></td>\r\n");
       out.write("  </tr>\r\n");
       out.write("</table>\r\n");
-      out.write("<div id='adduser' style=\"width: 700px;height: 400px;\" class=\"pop-box\">\r\n");
+      out.write("<div id='adduser' style=\"width: 700px;height: 400px; display:none\" class=\"pop-box\">\r\n");
       out.write("\t\t\t<div class='tit'>\r\n");
       out.write("\t\t\t\t<span class=\"tittext\"></span><img src=\"");
       out.print(path );
@@ -320,6 +346,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("</div>\r\n");
+      out.write("<div id=\"print\" style=\" border:0px red solid; display:none\"></div>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
@@ -342,15 +369,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     org.springframework.web.servlet.tags.form.SelectTag _jspx_th_sf_005fselect_005f0 = (org.springframework.web.servlet.tags.form.SelectTag) _005fjspx_005ftagPool_005fsf_005fselect_0026_005fpath_005fitems_005fitemValue_005fitemLabel_005fdisabled_005fnobody.get(org.springframework.web.servlet.tags.form.SelectTag.class);
     _jspx_th_sf_005fselect_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fselect_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/gasuselist.jsp(96,358) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(101,358) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setPath("userid");
-    // /WEB-INF/jsp/gas/gasuselist.jsp(96,358) name = disabled type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(101,358) name = disabled type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setDisabled((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${usedisable}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/gas/gasuselist.jsp(96,358) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(101,358) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${users}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/gas/gasuselist.jsp(96,358) name = itemLabel type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(101,358) name = itemLabel type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItemLabel("name");
-    // /WEB-INF/jsp/gas/gasuselist.jsp(96,358) name = itemValue type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(101,358) name = itemValue type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fselect_005f0.setItemValue("id");
     int[] _jspx_push_body_count_sf_005fselect_005f0 = new int[] { 0 };
     try {
@@ -369,6 +396,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     return false;
   }
 
+  private boolean _jspx_meth_c_005fset_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f0 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_005fset_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fset_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(111,11) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setVar("total");
+    // /WEB-INF/jsp/gas/gasuselist.jsp(111,11) name = value type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setValue(new org.apache.jasper.el.JspValueExpression("/WEB-INF/jsp/gas/gasuselist.jsp(111,11) '${0}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${0}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    int _jspx_eval_c_005fset_005f0 = _jspx_th_c_005fset_005f0.doStartTag();
+    if (_jspx_th_c_005fset_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f0);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fforEach_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -377,11 +425,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/gasuselist.jsp(106,10) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/jsp/gas/gasuselist.jsp(106,10) '${pageView.records}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${pageView.records}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
-    // /WEB-INF/jsp/gas/gasuselist.jsp(106,10) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(112,10) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/jsp/gas/gasuselist.jsp(112,10) '${pageView.records}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${pageView.records}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/jsp/gas/gasuselist.jsp(112,10) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("us");
-    // /WEB-INF/jsp/gas/gasuselist.jsp(106,10) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(112,10) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("status");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -392,21 +440,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           out.write("          <tr>\r\n");
           out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${status.index+1}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td>\r\n");
+          out.write("&nbsp;</td>\r\n");
           out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${us.buser.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td>\r\n");
+          out.write("&nbsp;</td>\r\n");
           out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\"> ");
           if (_jspx_meth_fmt_005fformatDate_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(" </td>\r\n");
+          out.write(" &nbsp;</td>\r\n");
           out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${us.gasvol}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("&nbsp;");
+          if (_jspx_meth_c_005fset_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
+            return true;
           out.write("</td>\r\n");
           out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${us.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td>\r\n");
-          out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\"></td>\r\n");
+          out.write("&nbsp;</td>\r\n");
+          out.write("            <td height=\"20\" align=\"center\" class=\"bordertd\" valign=\"bottom\"> ");
+          if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
+            return true;
+          out.write("&nbsp;</td>\r\n");
           out.write("          </tr>\r\n");
           out.write("          ");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
@@ -436,10 +490,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_005fformatDate_005f0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
     _jspx_th_fmt_005fformatDate_005f0.setPageContext(_jspx_page_context);
     _jspx_th_fmt_005fformatDate_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /WEB-INF/jsp/gas/gasuselist.jsp(110,77) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/gas/gasuselist.jsp(116,77) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_fmt_005fformatDate_005f0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${us.addtime}", java.util.Date.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/jsp/gas/gasuselist.jsp(110,77) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_fmt_005fformatDate_005f0.setPattern("yyyy-MM-dd hh:mm:ss");
+    // /WEB-INF/jsp/gas/gasuselist.jsp(116,77) name = pattern type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_fmt_005fformatDate_005f0.setPattern("yyyy-MM-dd");
     int _jspx_eval_fmt_005fformatDate_005f0 = _jspx_th_fmt_005fformatDate_005f0.doStartTag();
     if (_jspx_th_fmt_005fformatDate_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005ffmt_005fformatDate_0026_005fvalue_005fpattern_005fnobody.reuse(_jspx_th_fmt_005fformatDate_005f0);
@@ -449,22 +503,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f0)
+  private boolean _jspx_meth_c_005fset_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f1 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_005fset_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fset_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(117,94) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f1.setVar("total");
+    // /WEB-INF/jsp/gas/gasuselist.jsp(117,94) name = value type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f1.setValue(new org.apache.jasper.el.JspValueExpression("/WEB-INF/jsp/gas/gasuselist.jsp(117,94) '${total+us.gasvol}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${total+us.gasvol}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    int _jspx_eval_c_005fset_005f1 = _jspx_th_c_005fset_005f1.doStartTag();
+    if (_jspx_th_c_005fset_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:if
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/jsp/gas/gasuselist.jsp(118,11) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(119,77) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.role=='1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\r\n");
-        out.write("           <span class=\"sec1\" onclick=\"addgasuse()\"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span>\r\n");
-        out.write("           ");
+        out.write("<span class=\"sec1\" onclick=\"addgasuse(");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${us.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write(")\"> &nbsp;&nbsp;修改&nbsp;</span>");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -475,6 +550,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_005fformatNumber_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatNumber
+    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_005fformatNumber_005f0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
+    _jspx_th_fmt_005fformatNumber_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_005fformatNumber_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(124,63) name = maxFractionDigits type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_fmt_005fformatNumber_005f0.setMaxFractionDigits(2);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(124,63) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_fmt_005fformatNumber_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${total}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_fmt_005fformatNumber_005f0 = _jspx_th_fmt_005fformatNumber_005f0.doStartTag();
+    if (_jspx_th_fmt_005fformatNumber_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody.reuse(_jspx_th_fmt_005fformatNumber_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005ffmt_005fformatNumber_0026_005fvalue_005fmaxFractionDigits_005fnobody.reuse(_jspx_th_fmt_005fformatNumber_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
+    // /WEB-INF/jsp/gas/gasuselist.jsp(130,11) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.role=='1'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("           <span class=\"sec1\" onclick=\"addgasuse('')\"> &nbsp;&nbsp;新增气量记录&nbsp;&nbsp;</span>\r\n");
+        out.write("           &nbsp;&nbsp;<span class=\"sec1\" onclick=\"printTure()\"> 打印&nbsp;&nbsp;&nbsp;&nbsp;</span>\r\n");
+        out.write("           ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
     return false;
   }
 }

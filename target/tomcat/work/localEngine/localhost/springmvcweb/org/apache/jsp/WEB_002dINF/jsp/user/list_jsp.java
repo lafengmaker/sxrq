@@ -305,7 +305,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("/images/buttom_right2.gif\" width=\"16\" height=\"17\" /></td>\r\n");
       out.write("  </tr>\r\n");
       out.write("</table>\r\n");
-      out.write("<div id='adduser' style=\"width: 700px;height: 400px;\" class=\"pop-box\">\r\n");
+      out.write("<div id='adduser' style=\"width: 700px;height: 400px; display:none\" class=\"pop-box\">\r\n");
       out.write("\t\t\t<div class='tit'>\r\n");
       out.write("\t\t\t\t<span class=\"tittext\"></span><img src=\"");
       out.print(path );

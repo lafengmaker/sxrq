@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lafengmaker.core.entity.GasUse;
 import com.lafengmaker.core.entity.User;
 import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.service.GasUseService;
@@ -36,7 +37,7 @@ public class GasUseController {
 		}else{
 			map.addAttribute("usedisable", false);
 		}
-		List<User>uss=this.userService.getAllUser();
+		List<User>uss=this.userService.getcommUser();
 		map.addAttribute("users", uss);
 		map.addAttribute("search",search);
 		map.addAttribute("pageView", this.gasUseService.getGesUsePageView(search, currpage.intValue()));
@@ -45,24 +46,30 @@ public class GasUseController {
 	@RequestMapping(value="gasuse/gasaddbefore")
 	public String addBrefor(ModelMap map,HttpServletRequest request){
 		User u=SessionUtil.getUserFromRequest(request);
+		String p=request.getParameter("p");
+		
 		if(!"1".equals(u.getRole())){
 			throw new UserException("用户异常，请重新登录");
 		}
-		List<User>uss=this.userService.getAllUser();
+		List<User>uss=this.userService.getcommUser();
 		map.addAttribute("users", uss);
-		map.addAttribute(new GasUseView());
+		GasUseView gv=this.gasUseService.findgasUseViewById(p);
+		map.addAttribute(gv);
 		return "gas/useradd";
 	}
 	@RequestMapping(value="gasuse/gasadd")
 	public String add(ModelMap map,HttpServletRequest request,@Valid @ModelAttribute GasUseView gasUseView,BindingResult result){
-		List<User>uss=this.userService.getAllUser();
+		List<User>uss=this.userService.getcommUser();
 		map.addAttribute("users", uss);
 		if(result.hasErrors()){
 			return "gas/useradd";
 		}
-		User u=SessionUtil.getUserFromRequest(request);
-		gasUseView.setUserid(u.getId());
-		this.gasUseService.addGasuse(gasUseView.toGasUse());
+		try {
+			this.gasUseService.addGasuse(gasUseView.toGasUse());
+		} catch (Exception e) {
+			result.rejectValue("addtime", null, e.getMessage());
+			return "gas/useradd";
+		}
 		map.addAttribute(gasUseView);
 		return  "success";
 	}
