@@ -7,7 +7,7 @@ public class UserException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * add time 1003
+	 * add time 1003  1052
 	 */
 	public UserException() {
 		super();
