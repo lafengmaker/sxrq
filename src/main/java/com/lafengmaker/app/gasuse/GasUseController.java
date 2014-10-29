@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lafengmaker.core.entity.GasUse;
 import com.lafengmaker.core.entity.User;
 import com.lafengmaker.core.exception.UserException;
 import com.lafengmaker.core.service.GasUseService;

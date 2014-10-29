@@ -28,7 +28,6 @@ public class SessionInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object handler) throws Exception {
 		try {
-			System.out.println(handler.getClass().getName());
 			User u=SessionUtil.getUserFromRequest(request);
 			logger.debug("userid:"+u.getId());
 			return true;
